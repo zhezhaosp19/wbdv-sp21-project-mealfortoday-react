@@ -5,9 +5,16 @@ const Home = () => {
   return (
       <div>
         <h1>Home</h1>
-        <Link to={"/search"}>
-          Search
-        </Link>
+          <div>
+              <Link to={"/search"}>
+                  Search
+              </Link>
+          </div>
+          <div>
+              <Link to={"/register"}>
+                  Register
+              </Link>
+          </div>
       </div>
   )
 }
