@@ -17,11 +17,6 @@ function App() {
               path={["/search", "/search/:title"]}>
             <SearchMeals/>
           </Route>
-          <Route
-              exact={true}
-              path={["/details/:imdbID"]}>
-            <MealDetails/>
-          </Route>
         </BrowserRouter>
       </div>
   );
