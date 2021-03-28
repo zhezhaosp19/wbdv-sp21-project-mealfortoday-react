@@ -13,7 +13,7 @@ const MealDetails = () => {
 
   return (
       <div className="container-fluid">
-        <h1>{meal.Title}</h1>
+        <h1>{meal.strMeal}</h1>
 
         <img src={meal.strMealThumb}/>
         <h2>Meal:</h2>
