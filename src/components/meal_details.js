@@ -7,20 +7,22 @@ const MealDetails = () => {
   const {idMeal} = useParams();
 
   useEffect(() => {
-    mealsService.findMovieById(idMeal)
-    .then(meal => setMeal(meal))
-  })
+    findMealById()
+  }, [])
+
+  const findMealById = () => {
+    mealsService.findMealById(idMeal)
+    .then((meal) => setMeal(meal))
+  }
 
   return (
       <div className="container-fluid">
-        <h1>{meal.strMeal}</h1>
+        <h1>{idMeal}</h1>
 
         <img src={meal.strMealThumb}/>
-        <h2>Meal:</h2>
         <p>
           {meal.strInstructions}
         </p>
-        <h2>strTags:</h2>
         <ul className="list-group">
           {
             meal.strTags && meal.strTags.split(",").map(tag =>
