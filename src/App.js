@@ -1,7 +1,7 @@
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/Home";
 import SearchMeals from "./components/search/search_meal";
-import MealDetails from "./components/details_meal";
+import MealDetails from "./components/meal_details";
 
 function App() {
   return (

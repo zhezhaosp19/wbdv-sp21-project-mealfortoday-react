@@ -18,7 +18,6 @@ const MealDetails = () => {
   }
 
   return (
-<<<<<<< HEAD:src/components/details_meal.js
       <>
         <Header/>
         <div className="container-fluid  mt-5">
@@ -41,25 +40,6 @@ const MealDetails = () => {
           {JSON.stringify(meal)}
         </div>
       </>
-=======
-      <div className="container-fluid">
-        <h1>{idMeal}</h1>
-
-        <img src={meal.strMealThumb}/>
-        <p>
-          {meal.strInstructions}
-        </p>
-        <ul className="list-group">
-          {
-            meal.strTags && meal.strTags.split(",").map(tag =>
-                <li className="list-group-item">
-                  {tag}
-                </li>)
-          }
-        </ul>
-        {JSON.stringify(meal)}
-      </div>
->>>>>>> 41426260c798b36ed47867ee17870026920e6e4b:src/components/meal_details.js
   )
 }
 
