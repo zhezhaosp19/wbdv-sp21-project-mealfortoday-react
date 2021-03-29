@@ -20,6 +20,12 @@ const Home = () => {
                   Log In
               </Link>
           </div>
+
+          <div>
+              <Link to={"/profile"}>
+                  Profile
+              </Link>
+          </div>
       </div>
   )
 }

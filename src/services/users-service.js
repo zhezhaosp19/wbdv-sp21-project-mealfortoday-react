@@ -1,6 +1,7 @@
+const API_URL = "localhost:8080/api"
 const PROFILE_URL = "localhost:8080/api/profile"
 
-export const createCourse = (user) =>
+export const createUser = (user) =>
     fetch(PROFILE_URL, {
         method: 'POST',
         body: JSON.stringify(user),
@@ -8,3 +9,7 @@ export const createCourse = (user) =>
             'content-type': 'application/json'
         }
     }).then(response => response.json())
+
+export default {
+    createUser
+}
