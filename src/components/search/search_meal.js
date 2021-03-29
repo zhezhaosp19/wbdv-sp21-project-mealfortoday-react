@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import mealsService from '../../services/meals-service'
 import {Link, useParams, useHistory} from "react-router-dom";
-import Header from "../partials/navbar";
+import Header from "../partials/header";
 import SearchCard from "./search_card";
 
 const SearchMeals = () => {
@@ -20,7 +20,7 @@ const SearchMeals = () => {
   return(
       <>
         <Header/>
-          <div className="container-fluid">
+          <div className="container-fluid mt-5">
             <h1>Search Meals</h1>
             <input
                 onChange={(event) => {
@@ -28,6 +28,7 @@ const SearchMeals = () => {
                 }}
                 className="form-control"
                 value={searchTitle}/>
+                <br/>
             <button
                 onClick={() => {history.push(`/search/${searchTitle}`)}}
                 className="btn btn-primary btn-block">

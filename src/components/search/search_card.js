@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 const SearchCard = ({meal}) => {
 
   return (
-      <div className="col-3">
+      <div className="col-3 ml-n2">
         <div className="card mt-5" key={meal.idMeal}>
           <img
               src={meal.strMealThumb}
