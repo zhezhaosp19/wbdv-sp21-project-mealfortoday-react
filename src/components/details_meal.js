@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link, useParams} from "react-router-dom";
 import mealsService from '../services/meals-service'
 
+
 const MealDetails = () => {
   const[meal, setMeal] = useState({})
   const {idMeal} = useParams();

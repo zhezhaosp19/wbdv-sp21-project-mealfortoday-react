@@ -1,6 +1,6 @@
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/Home";
-import SearchMeals from "./components/search_meal";
+import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/details_meal";
 
 function App() {

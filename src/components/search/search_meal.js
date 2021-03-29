@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import mealsService from '../services/meals-service'
+import mealsService from '../../services/meals-service'
 import {Link, useParams, useHistory} from "react-router-dom";
+import SearchCard from "./search_card";
 
 const SearchMeals = () => {
   const {title} = useParams()
@@ -16,7 +17,7 @@ const SearchMeals = () => {
     }
   }, [title])
   return(
-      <div>
+      <div className="container-fluid">
         <h1>Search Meals</h1>
         <input
             onChange={(event) => {
@@ -29,14 +30,17 @@ const SearchMeals = () => {
             className="btn btn-primary btn-block">
           Search
         </button>
-        <ul className="list-group">
+        <ul className="row">
           {
-            results.meals.map(meal =>
-                <li className="list-group-item" key={meal.idMeal}>
-                  <Link to={`/details/${meal.idMeal}`}>
-                    {meal.strMeal}
-                  </Link>
-                </li>
+            // results && results.meals && results.meals.map(meal =>
+            //     <li className="list-group-item" key={meal.idMeal}>
+            //       <Link to={`/details/${meal.idMeal}`}>
+            //         {meal.strMeal}
+            //       </Link>
+            //     </li>
+            // )
+            results && results.meals && results.meals.map(meal =>
+              <SearchCard meal={meal}/>
             )
           }
         </ul>
