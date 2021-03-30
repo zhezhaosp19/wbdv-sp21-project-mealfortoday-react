@@ -1,8 +1,8 @@
-const API_URL = "localhost:8080/api"
-const PROFILE_URL = "localhost:8080/api/profile"
+const PROFILE_URL = "http://localhost:8080/api/profile"
+const REGISTER_URL = "http://localhost:8080/api/register"
 
-export const createUser = (user) =>
-    fetch(PROFILE_URL, {
+export const createCourse = (user, username, password, email, role, birthday) =>
+    fetch(`${REGISTER_URL}/${username}/${password}/${email}/${role}/${birthday}`, {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
@@ -11,5 +11,5 @@ export const createUser = (user) =>
     }).then(response => response.json())
 
 export default {
-    createUser
+    createCourse
 }
