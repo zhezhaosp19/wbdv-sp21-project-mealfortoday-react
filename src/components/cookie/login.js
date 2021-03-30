@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {Link} from "react-router-dom";
 
-const Login = () => {
+const Login = (
+    users=[],
+    findUser,
 
+
+) => {
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const printUser = () => {console.log("name: " + username)}
+    const printPW = () => {console.log("password: " + password)}
+
+    useEffect(() => printUser, [])
     return (
         <div className="container">
             <h1>Log In</h1>
@@ -12,16 +23,23 @@ const Login = () => {
                         Username
                     </label>
                     <div className="col-sm-10">
-                        <input className="form-control wbdv-field wbdv-username"
-                               id="username"
-                               placeholder="Alice"/>
+                        <input
+                            onChange={(e) => {
+                                setUsername(e.target.value)
+                            }}
+                            className="form-control"
+                            id="username"
+                            placeholder="Alice"/>
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="password" className="col-sm-2 col-form-label">
                         Password </label>
                     <div className="col-sm-10">
-                        <input type="password" className="form-control wbdv-field wbdv-password"
+                        <input onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                               type="password" className="form-control wbdv-field wbdv-password"
                                id="password" placeholder="123qwe#$%"/>
                     </div>
                 </div>
@@ -29,10 +47,15 @@ const Login = () => {
                     <label className="col-sm-2 col-form-label"/>
                     <div className="col-sm-10">
                         {/*TODO: CREATE LINK*/}
-                        <a className="btn btn-primary btn-block"
-                           href="#">
+                        <Link
+                            onClick={() => {
+                                printUser()
+                                printPW()
+                            }}
+                            className="btn btn-primary btn-block"
+                            to="#">
                             Sign in
-                        </a>
+                        </Link>
                         <div className="row">
                             <div className="col-6">
                                 {/*TODO: CREATE LINK*/}

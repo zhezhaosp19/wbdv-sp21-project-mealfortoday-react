@@ -8,12 +8,17 @@ const Home = () => {
         <Header/>
         <div className="container-fluid mt-5">
           <h1>Home</h1>
-          <Link to={"/search"}>
-            Search
-          </Link>
-            <Link to={"/register"}>
-                Register
-            </Link>
+            <div>
+                <Link to={"/search"}>
+                    Search
+                </Link>
+            </div>
+          <div>
+              <Link to={"/register"}>
+                  Register
+              </Link>
+          </div>
+
         </div>
       </>
   )
