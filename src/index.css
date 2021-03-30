@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container{
+  margin: 0 auto;
+  display: block;
+  width: 55%;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.ingredients{
+  line-height: 3;
+}
+
+.instructions{
+  line-height: 3;
+}
+
+.mealThumb{
+  display: block;
+}
+
+.briefInfo{
+  line-height: 3;
+}

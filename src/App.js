@@ -29,6 +29,9 @@ function App() {
                 path={["/login"]}>
                 <Login/>
             </Route>
+              <Route path="/details/:idMeal" exact={true}>
+                  <MealDetails/>
+              </Route>
         </BrowserRouter>
       </div>
   );
