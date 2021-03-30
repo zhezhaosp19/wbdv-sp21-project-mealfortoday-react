@@ -1,9 +1,9 @@
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/Home";
-import SearchMeals from "./components/search_meal";
-import MealDetails from "./components/details_meal";
 import Register from "./components/cookie/register";
 import Login from "./components/cookie/login";
+import SearchMeals from "./components/search/search_meal";
+import MealDetails from "./components/meal_details";
 
 function App() {
   return (
@@ -29,9 +29,9 @@ function App() {
                 path={["/login"]}>
                 <Login/>
             </Route>
-              <Route path="/details/:idMeal" exact={true}>
-                  <MealDetails/>
-              </Route>
+          <Route path="/details/:idMeal" exact={true}>
+              <MealDetails/>
+          </Route>
         </BrowserRouter>
       </div>
   );

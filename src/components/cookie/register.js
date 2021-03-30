@@ -99,7 +99,7 @@ class Register extends React.Component {
                         <button
 
                             onClick={this.onSubmit}
-                            className="btn btn-primary btn-block">
+                            className="btn btn-primary">
                             Register
                         </button>
                     </Link>
