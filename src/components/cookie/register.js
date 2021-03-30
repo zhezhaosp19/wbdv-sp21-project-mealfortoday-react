@@ -95,14 +95,14 @@ class Register extends React.Component {
 
 
                 <div className="form-group row">
-                    {/*<Link to="/login">*/}
+                    <Link to="/login" className="form-control">
                         <button
 
                             onClick={this.onSubmit}
                             className="btn btn-primary btn-block">
                             Register
                         </button>
-                    {/*</Link>*/}
+                    </Link>
 
                 </div>
 
