@@ -95,13 +95,10 @@ class Register extends React.Component {
 
 
                 <div className="form-group row">
-                    <Link to="/login" className="form-control">
-                        <button
+                    <Link to="/login" className="form-control btn btn-primary"
+                          onClick={this.onSubmit}>
+                        Register
 
-                            onClick={this.onSubmit}
-                            className="btn btn-primary btn-block">
-                            Register
-                        </button>
                     </Link>
 
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 const Login = () => {
 
@@ -29,22 +30,22 @@ const Login = () => {
                     <label className="col-sm-2 col-form-label"/>
                     <div className="col-sm-10">
                         {/*TODO: CREATE LINK*/}
-                        <a className="btn btn-primary btn-block"
-                           href="#">
+                        <Link className="btn btn-primary btn-block"
+                           to="/search">
                             Sign in
-                        </a>
+                        </Link>
                         <div className="row">
                             <div className="col-6">
                                 {/*TODO: CREATE LINK*/}
-                                <a href="#">
+                                <Link to="#">
                                     Forgot Password?
-                                </a>
+                                </Link>
                             </div>
                             <div className="col-6">
                                 {/*TODO: CREATE LINK*/}
-                                <a href="#" className="float-right">
+                                <Link to="#" className="float-right">
                                     Sign up
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
