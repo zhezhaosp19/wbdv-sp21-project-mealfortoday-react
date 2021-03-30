@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import SearchMeals from "./components/search_meal";
 import MealDetails from "./components/details_meal";
 import Register from "./components/cookie/register";
+import Login from "./components/cookie/login";
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
                 exact={true}
                 path={["/register"]}>
                 <Register/>
+            </Route>
+            <Route
+                exact={true}
+                path={["/login"]}>
+                <Login/>
             </Route>
         </BrowserRouter>
       </div>
