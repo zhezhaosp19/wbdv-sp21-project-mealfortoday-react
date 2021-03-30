@@ -1,5 +1,7 @@
 <h2>P2 Project Prototype</h2>
 
+<p>https://wbdv-sp21-mealfortoday.herokuapp.com/</p>
+
 <ol>
  <li>Description of API:
 <p>TheMealDB: https://www.themealdb.com/api.php. It’s an open online database of food meal recipes. It allows features like uploading meals with images, browsing meals in sequence, categorizing meals. Users can look up meals by name and id, they can list all categories, area, ingredients.</p>
