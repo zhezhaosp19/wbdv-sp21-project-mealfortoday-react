@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
+import userService from '../../services/users-service';
+import {Link} from "react-router-dom";
 
 class Register extends React.Component {
     state = {
-        username: '',
-        password: '',
-        email: '',
-        role: '',
-        birthday: ''
+        // username: '',
+        // password: '',
+        // email: '',
+        // role: '',
+        // birthday: ''
+        users: []
     }
 
     onChangeHandler = (e) => {
@@ -17,7 +20,18 @@ class Register extends React.Component {
     }
 
     onSubmit = () => {
-
+        const user = {
+            username: this.state.username,
+            password: this.state.password,
+            email: this.state.email,
+            role: this.state.role,
+            birthday: this.state.birthday
+        }
+        userService.createCourse(user, this.state.username, this.state.password, this.state.email, this.state.role, this.state.birthday)
+            .then(actualUser => {
+                this.state.users.push(actualUser)
+                this.setState(this.state)
+        })
     }
 
     render() {
@@ -60,7 +74,7 @@ class Register extends React.Component {
                     <div className="col-sm-10">
                         <select onChange={e => this.onChangeHandler(e)}
                                 value={this.state.role}
-                                className="form-control wbdv-field wbdv-role"
+                                className="form-control"
                                 name="role" id="role">
                             <option value="Client" selected>Client</option>
                             <option value="Chef">Chef</option>
@@ -74,17 +88,21 @@ class Register extends React.Component {
                     <div className="col-sm-10">
                         <input onChange={e => this.onChangeHandler(e)}
                                value={this.state.birthday}
-                               className="form-control wbdv-field wbdv-role"
+                               className="form-control"
                                type="date" id="birthday" name="birthday"/>
                     </div>
                 </div>
 
+
                 <div className="form-group row">
-                    <button
-                        onClick={() => this.onSubmit}
-                        className="btn btn-primary btn-block">
-                        Register
-                    </button>
+                    <Link to="/login" className="form-control">
+                        <button
+
+                            onClick={this.onSubmit}
+                            className="btn btn-primary btn-block">
+                            Register
+                        </button>
+                    </Link>
 
                 </div>
 

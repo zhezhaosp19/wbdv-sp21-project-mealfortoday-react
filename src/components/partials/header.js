@@ -97,9 +97,9 @@ const Header = () => {
               {/*  <Button variant="outline-success">Search</Button>*/}
               {/*</Form>*/}
             <Nav>
-               <Nav.Link href="#Login">Login</Nav.Link>
+               <Nav.Link href="/login">Login</Nav.Link>
                <Nav.Link href="#Register">Register</Nav.Link>
-               <Nav.Link href="#Profile">Profile</Nav.Link>
+               <Nav.Link href="/profile">Profile</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

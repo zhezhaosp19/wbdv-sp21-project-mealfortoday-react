@@ -2,6 +2,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/Home";
 import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/meal_details";
+import Login from "./components/cookie/login";
+import ProfilePage from "./components/cookie/profile-page";
 
 function App() {
   return (
@@ -20,6 +22,14 @@ function App() {
           <Route path="/details/:idMeal" exact={true}>
               <MealDetails/>
           </Route>
+        <Route path="/login" exact={true}>
+            <Login/>
+        </Route>
+
+        <Route path="/profile" exact={true}>
+            <ProfilePage/>
+        </Route>
+
         </BrowserRouter>
       </div>
   );
