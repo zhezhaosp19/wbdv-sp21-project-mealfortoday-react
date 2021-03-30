@@ -4,6 +4,7 @@ import Register from "./components/cookie/register";
 import Login from "./components/cookie/login";
 import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/meal_details";
+import ProfilePage from "./components/cookie/profile-page";
 
 function App() {
   return (
@@ -28,6 +29,11 @@ function App() {
                 exact={true}
                 path={["/login"]}>
                 <Login/>
+            </Route>
+            <Route
+                exact={true}
+                path={["/profile"]}>
+                <ProfilePage/>
             </Route>
           <Route path="/details/:idMeal" exact={true}>
               <MealDetails/>
