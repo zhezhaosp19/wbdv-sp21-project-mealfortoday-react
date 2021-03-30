@@ -17,7 +17,7 @@
   </li>
 
 <li>Search criteria:
-<p>Type an ingredient in the search box and hit the button “search”, you will get a table of grid format showing the meal results. </p>
+<p>Type an ingredient in the search box and hit the button “search”, you will get a table of grid format showing the meal results. You can search like "cake, beef, chicken".</p>
 </li>
 
   <li>
@@ -28,15 +28,5 @@ Summary results:
 Details results:
 <p>In the detail page, there is a thumbnail following the name of the dish. The brief introduction shows the area, category and the youtube tutorial if there are any. The ingredients with measurements and the cooking instructions are displayed as lists.</p>
 </li>
-<li>
-Example queries and expected results:
-<p>Home page:</p>
-  
-<p>Search page:</p>
 
-<p>After search:</p>
-
-<p>Detail page of the specific dish:
-</p>
-</li>
 </ol>
