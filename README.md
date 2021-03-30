@@ -1,4 +1,4 @@
-<2>P2 Project Prototype</h2>
+<h2>P2 Project Prototype</h2>
 
 <ol>
  <li>Description of API:
