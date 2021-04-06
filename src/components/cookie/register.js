@@ -25,10 +25,10 @@ class Register extends React.Component {
             username: this.state.username,
             password: this.state.password,
             email: this.state.email,
-            role: this.state.role,
+            role: 'client',
             birthday: this.state.birthday
         }
-        userService.createCourse(user, this.state.username, this.state.password, this.state.email, this.state.role, this.state.birthday)
+        userService.createUsers(user)
             .then(actualUser => {
                 this.state.users.push(actualUser)
                 this.setState(this.state)
@@ -98,7 +98,7 @@ class Register extends React.Component {
 
 
                     <div className="form-group row">
-                        <Link to="/login" className="form-control btn btn-primary"
+                        <Link to="#" className="form-control btn btn-primary"
                               onClick={this.onSubmit}>
                             Register
                         </Link>
