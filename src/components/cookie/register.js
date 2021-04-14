@@ -25,6 +25,7 @@ class Register extends React.Component {
             username: this.state.username,
             password: this.state.password,
             email: this.state.email,
+            // role: this.state.role,
             role: 'client',
             birthday: this.state.birthday
         }
@@ -38,10 +39,8 @@ class Register extends React.Component {
     render() {
         return(
             <>
-                <Header/>
                 <div className="container">
                     <h1>Register</h1>
-
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
                         <div className="col-sm-10">
@@ -96,15 +95,25 @@ class Register extends React.Component {
                         </div>
                     </div>
 
-
                     <div className="form-group row">
-                        <Link to="#" className="form-control btn btn-primary"
-                              onClick={this.onSubmit}>
-                            Register
-                        </Link>
+                        <label className="col-sm-2 col-form-label"/>
+                        <div className="col-sm-12">
+                            <Link to="/login" className="btn btn-primary form-control"
+                                  onClick={this.onSubmit}>
+                                Register
+
+                            </Link>
+
+                            <div>
+                                 Already is a member?
+                                 <Link to="/login">
+                                     Sign in
+                                 </Link>
+
+                            </div>
+                        </div>
 
                     </div>
-
                 </div>
             </>
         )
