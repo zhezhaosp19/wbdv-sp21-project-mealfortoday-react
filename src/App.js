@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import Register from "./components/cookie/register";
 import Login from "./components/cookie/login";
 import SearchMeals from "./components/search/search_meal";
-import MealDetails from "./components/meal_details";
+import MealDetails from "./components/details/meal_details";
 import ProfilePage from "./components/cookie/profile-page";
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
                 path={["/profile"]}>
                 <ProfilePage/>
             </Route>
-          <Route path="/details/:idMeal" exact={true}>
+          <Route path="/:searchTitle/details/:idMeal" exact={true}>
               <MealDetails/>
           </Route>
         </BrowserRouter>
