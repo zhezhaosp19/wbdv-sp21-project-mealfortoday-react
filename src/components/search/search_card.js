@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-const SearchCard = ({meal}) => {
+const SearchCard = ({meal, searchTitle}) => {
 
   return (
       <div className="col-3 ml-n2">
@@ -11,9 +11,8 @@ const SearchCard = ({meal}) => {
               className="card-img-top" alt="..."/>
           <div className="card-body">
             {/*<h5 className="card-title">{meal.strMeal}</h5>*/}
-
             <img src={``}/>
-            <Link to={`/details/${meal.idMeal}`}>
+            <Link to={`/${searchTitle}/details/${meal.idMeal}`}>
               <h5 className="card-title">{meal.strMeal}</h5>
             </Link>
           </div>

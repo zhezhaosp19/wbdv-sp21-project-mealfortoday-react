@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useParams, useHistory} from "react-router-dom";
-import mealsService from '../services/meals-service'
-import Header from "./partials/header";
+import mealsService from '../../services/meals-service'
+import Header from "../partials/header";
 
 const MealDetails = () => {
   const history = useHistory()
   const [meal, setMeal] = useState({})
-  const {idMeal} = useParams();
+  const {idMeal, searchTitle} = useParams();
 
   useEffect(() => {
     findMealById()
@@ -33,6 +33,7 @@ const MealDetails = () => {
 
   const listAllIngredients = (meal) => {
     return (
+    // TODO: will improve later
       <ul className="ingredients">
         {meal.strIngredient1 !== null && meal.strIngredient1 !== "" && <li>{meal.strIngredient1}, {meal.strMeasure1}</li>}
         {meal.strIngredient2 !== null && meal.strIngredient2 !== "" && <li>{meal.strIngredient2}, {meal.strMeasure2}</li>}
@@ -76,6 +77,10 @@ const MealDetails = () => {
     )
   }
 
+  const displaySimilarDishes = () => {
+
+  }
+
   return (
     <>
       <Header/>
@@ -92,7 +97,16 @@ const MealDetails = () => {
         <h2>Instructions</h2>
         {showInstructions(meal)}
 
-        {JSON.stringify(meal)}
+        <h2>Similar Dishes</h2>
+
+        {searchTitle}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
       </div>
     </>
   )

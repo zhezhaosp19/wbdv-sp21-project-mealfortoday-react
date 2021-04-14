@@ -44,7 +44,7 @@ const SearchMeals = () => {
                 //     </li>
                 // )
                 results && results.meals && results.meals.map(meal =>
-                  <SearchCard meal={meal}/>
+                  <SearchCard meal={meal} searchTitle={searchTitle}/>
                 )
               }
             </ul>
