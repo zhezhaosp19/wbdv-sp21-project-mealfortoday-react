@@ -24,10 +24,11 @@ class Register extends React.Component {
             username: this.state.username,
             password: this.state.password,
             email: this.state.email,
-            role: this.state.role,
+            // role: this.state.role,
+            role: 'client',
             birthday: this.state.birthday
         }
-        userService.createCourse(user, this.state.username, this.state.password, this.state.email, this.state.role, this.state.birthday)
+        userService.createUsers(user)
             .then(actualUser => {
                 this.state.users.push(actualUser)
                 this.setState(this.state)
@@ -45,7 +46,7 @@ class Register extends React.Component {
                         <input onChange={e => this.onChangeHandler(e)}
                                value={this.state.username}
                                type="text" name="username" id="username" className="form-control"
-                               placeholder="username"/>
+                               placeholder="username" required/>
                     </div>
                 </div>
 
@@ -95,11 +96,22 @@ class Register extends React.Component {
 
 
                 <div className="form-group row">
-                    <Link to="/login" className="form-control btn btn-primary"
-                          onClick={this.onSubmit}>
-                        Register
+                    <label className="col-sm-2 col-form-label"/>
+                    <div className="col-sm-12">
+                        <Link to="/login" className="btn btn-primary form-control"
+                              onClick={this.onSubmit}>
+                            Register
 
-                    </Link>
+                        </Link>
+
+                        <div>
+                             Already is a member?
+                             <Link to="/login">
+                                 Sign in
+                             </Link>
+
+                        </div>
+                    </div>
 
                 </div>
 

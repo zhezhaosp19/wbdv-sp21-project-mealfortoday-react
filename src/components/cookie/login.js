@@ -15,7 +15,8 @@ const Login = () => {
                     <div className="col-sm-10">
                         <input className="form-control wbdv-field wbdv-username"
                                id="username"
-                               placeholder="Alice"/>
+                               placeholder="Alice"
+                               required/>
                     </div>
                 </div>
                 <div className="form-group row">
@@ -23,17 +24,19 @@ const Login = () => {
                         Password </label>
                     <div className="col-sm-10">
                         <input type="password" className="form-control wbdv-field wbdv-password"
-                               id="password" placeholder="123qwe#$%"/>
+                               id="password" placeholder="123qwe#$%"
+                               required/>
                     </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-2 col-form-label"/>
-                    <div className="col-sm-10">
+                    <div className="col-sm-12">
                         {/*TODO: CREATE LINK*/}
                         <Link className="btn btn-primary btn-block"
                            to="/search">
                             Sign in
                         </Link>
+
                         <div className="row">
                             <div className="col-6">
                                 {/*TODO: CREATE LINK*/}
@@ -43,7 +46,7 @@ const Login = () => {
                             </div>
                             <div className="col-6">
                                 {/*TODO: CREATE LINK*/}
-                                <Link to="#" className="float-right">
+                                <Link to="/register" className="float-right">
                                     Sign up
                                 </Link>
                             </div>
