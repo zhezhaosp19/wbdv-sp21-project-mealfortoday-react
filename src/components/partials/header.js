@@ -77,7 +77,7 @@ const Header = () => {
         {/*  </Nav>*/}
         {/*</Navbar>*/}
 
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="sticky-top">
           <Navbar.Brand href="#home">MealForToday</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
