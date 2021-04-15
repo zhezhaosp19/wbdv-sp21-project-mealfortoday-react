@@ -12,8 +12,8 @@ function App() {
         <BrowserRouter>
           <Route
               exact={true}
-              path={["/"]}>
-            <Home/>
+              path={["/"]}
+              component={Home}>
           </Route>
           <Route
               exact={true}
@@ -22,18 +22,18 @@ function App() {
           </Route>
             <Route
                 exact={true}
-                path={["/register"]}>
-                <Register/>
+                path="/register"
+                component={Register}>
             </Route>
             <Route
                 exact={true}
-                path={["/login"]}>
-                <Login/>
+                path="/login"
+                component={Login}>
             </Route>
             <Route
                 exact={true}
-                path={["/profile"]}>
-                <ProfilePage/>
+                path="/profile"
+                component={ProfilePage}>
             </Route>
           <Route path="/:searchTitle/details/:idMeal" exact={true}>
               <MealDetails/>

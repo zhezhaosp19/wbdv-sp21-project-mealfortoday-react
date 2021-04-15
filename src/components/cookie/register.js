@@ -5,12 +5,12 @@ import Header from "../partials/header";
 
 class Register extends React.Component {
     state = {
-        // username: '',
-        // password: '',
-        // email: '',
-        // role: '',
-        // birthday: ''
-        users: []
+        username: '',
+        password: '',
+        email: '',
+        role: 'client',
+        birthday: '',
+        // users: []
     }
 
     onChangeHandler = (e) => {
@@ -20,25 +20,34 @@ class Register extends React.Component {
         })
     }
 
-    onSubmit = () => {
-        const user = {
-            username: this.state.username,
-            password: this.state.password,
-            email: this.state.email,
-            // role: this.state.role,
-            role: 'client',
-            birthday: this.state.birthday
+    onSubmit = (user) => {
+        if(this.state.username === '') {
+            alert('Please enter your username!')
+            return;
         }
-        userService.createUsers(user)
-            .then(actualUser => {
-                this.state.users.push(actualUser)
-                this.setState(this.state)
-        })
+        if(this.state.password === '') {
+            alert('Please enter your password!')
+            return;
+        }
+        if(this.state.email === '') {
+            alert('Please enter your email!')
+            return;
+        }
+        if(this.state.birthday === '') {
+            alert('Please enter your birthday!')
+            return;
+        }
+
+        userService.register(user)
+            .then((newUser) =>
+                this.props.history.push('/profile')
+            )
     }
 
     render() {
         return(
             <>
+                <Header/>
                 <div className="container">
                     <h1>Register</h1>
                     <div className="form-group row">
@@ -98,11 +107,11 @@ class Register extends React.Component {
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label"/>
                         <div className="col-sm-12">
-                            <Link to="/login" className="btn btn-primary form-control"
-                                  onClick={this.onSubmit}>
+                            <button className="btn btn-primary form-control"
+                                  onClick={() => this.onSubmit(this.state)}>
                                 Register
 
-                            </Link>
+                            </button>
 
                             <div>
                                  Already is a member?
