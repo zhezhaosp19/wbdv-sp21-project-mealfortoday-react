@@ -98,7 +98,7 @@ const Header = () => {
               {/*</Form>*/}
             <Nav>
                <Nav.Link href="/login">Login</Nav.Link>
-               <Nav.Link href="#Register">Register</Nav.Link>
+               <Nav.Link href="/register">Register</Nav.Link>
                <Nav.Link href="/profile">Profile</Nav.Link>
             </Nav>
           </Navbar.Collapse>
