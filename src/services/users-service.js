@@ -1,9 +1,8 @@
-const PROFILE_URL = "http://localhost:8080/api/profile"
-const REGISTER_URL = "http://localhost:8080/api/register"
-const LOGOUT_URL = "http://localhost:8080/api/logout"
+const USER_URL = "http://localhost:4000/api/users"
 
-export const register = (user) =>
-    fetch(REGISTER_URL, {
+const register = (user) =>
+    // console.log(user)
+    fetch(`${USER_URL}/register`, {
         method: 'POST',
         body: JSON.stringify(user),
         credentials: "include",
@@ -12,14 +11,15 @@ export const register = (user) =>
         }
     }).then(response => response.json())
 
-export const profile = () =>
-    fetch(PROFILE_URL, {
+
+const profile = () =>
+    fetch(`${USER_URL}/profile`, {
         method: 'POST',
         credentials: "include"
     }).then(response => response.json())
 
-export const logout = () =>
-    fetch(LOGOUT_URL, {
+const logout = () =>
+    fetch(`${USER_URL}/logout`, {
         method: 'POST',
         credentials: "include"
     })

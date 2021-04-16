@@ -20,6 +20,7 @@ class ProfilePage extends React.Component{
             .then((profile) => this.setState({
                 profile: profile
             }))
+        console.log(this.state.profile.username)
     }
 
     onChangeHandler = (e) => {
@@ -46,6 +47,7 @@ class ProfilePage extends React.Component{
                 <Header/>
                 <div className="container">
                     <h1>Profile {this.state.profile.username} !</h1>
+                    {JSON.stringify(this.state.profile)}
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-3 col-form-label">Username</label>
                         <div className="col-sm-9">

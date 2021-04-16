@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import userService from '../../services/users-service';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Header from "../partials/header";
 
 class Register extends React.Component {
@@ -8,9 +8,8 @@ class Register extends React.Component {
         username: '',
         password: '',
         email: '',
-        role: 'client',
-        birthday: '',
-        // users: []
+        role: 'Client',
+        birthday: ''
     }
 
     onChangeHandler = (e) => {
@@ -39,9 +38,13 @@ class Register extends React.Component {
         }
 
         userService.register(user)
-            .then((newUser) =>
-                this.props.history.push('/profile')
-            )
+            .then((newUser) => {
+                if (newUser === 0) {
+                    alert("Username is already taken")
+                } else {
+                    this.props.history.push('/profile')
+                }
+            })
     }
 
     render() {
