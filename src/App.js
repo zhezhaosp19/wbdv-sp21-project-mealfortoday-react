@@ -6,6 +6,7 @@ import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/details/meal_details";
 import ProfilePage from "./components/cookie/profile-page";
 import Footer from "./components/partials/footer";
+import CreateRecipe from "./components/create-recipe";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
                 </Route>
                 <Route path="/:searchTitle/details/:idMeal" exact={true}>
                   <MealDetails/>
+                </Route>
+                <Route path="/create" exact={true}>
+                  <CreateRecipe/>
                 </Route>
               </div>
 

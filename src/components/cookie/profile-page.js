@@ -137,10 +137,13 @@ class ProfilePage extends React.Component{
                         <div className="form-group row">
                             <label className="col-sm-2 col-form-label"/>
                             <div className="col-sm-12">
-                                <button className="btn btn-success form-control"
-                                        onClick={this.updateHandle}>
-                                    Create Recipe
-                                </button>
+                                <Link to="/create">
+                                    <button className="btn btn-success form-control"
+                                            onClick={this.updateHandle}>
+                                        Create Recipe
+                                    </button>
+                                </Link>
+
                             </div>
                         </div>
 
