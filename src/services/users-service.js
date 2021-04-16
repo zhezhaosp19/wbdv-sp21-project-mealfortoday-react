@@ -1,15 +1,42 @@
-const PROFILE_URL = "http://localhost:8080/api/profile"
-const REGISTER_URL = "http://localhost:8080/api/register"
+const USER_URL = "http://localhost:4000/api/users"
 
-export const createCourse = (user, username, password, email, role, birthday) =>
-    fetch(`${REGISTER_URL}/${username}/${password}/${email}/${role}/${birthday}`, {
+const register = (user) =>
+    // console.log(user)
+    fetch(`${USER_URL}/register`, {
         method: 'POST',
         body: JSON.stringify(user),
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+
+
+const profile = () =>
+    fetch(`${USER_URL}/profile`, {
+        method: 'POST',
+        credentials: "include"
+    }).then(response => response.json())
+
+const logout = () =>
+    fetch(`${USER_URL}/logout`, {
+        method: 'POST',
+        credentials: "include"
+    })
+
+const login = (user) =>
+    fetch(`${USER_URL}/login`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        credentials: "include",
         headers: {
             'content-type': 'application/json'
         }
     }).then(response => response.json())
 
 export default {
-    createCourse
+    register,
+    profile,
+    logout,
+    login
 }
