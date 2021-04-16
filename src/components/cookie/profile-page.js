@@ -2,6 +2,7 @@ import React from 'react'
 import Header from "../partials/header";
 import {Link} from "react-router-dom";
 import userService from '../../services/users-service';
+import Footer from "../partials/footer";
 
 class ProfilePage extends React.Component{
     state = {
@@ -129,6 +130,7 @@ class ProfilePage extends React.Component{
                     </div>
 
                 </div>
+                <Footer/>
             </>
         )
     }

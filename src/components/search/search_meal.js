@@ -4,6 +4,7 @@ import {Link, useParams, useHistory} from "react-router-dom";
 import Header from "../partials/header";
 import SearchCard from "./search_card";
 import FilterBar from "./filter/filterBar";
+import Footer from "../partials/footer";
 
 const SearchMeals = () => {
   const {title} = useParams()
@@ -52,7 +53,7 @@ const SearchMeals = () => {
   return(
       <>
         <Header/>
-          <div className="container-fluid mt-5">
+          <div className="container-fluid mt-5 main-container">
 
             <h1>Search Meals</h1>
 
@@ -71,15 +72,15 @@ const SearchMeals = () => {
             <br/>
             <div className="row">
 
-              {
-                results && results.meals && results.meals.length !== 0 &&
-                <div className="col-2">
-                  <br/>
-                  <br/>
-                  <FilterBar setCategory={setSearchCategory}/>
-                  {updateResult}
-                </div>
-              }
+              {/*{*/}
+              {/*  results && results.meals && results.meals.length !== 0 &&*/}
+              {/*  <div className="col-2">*/}
+              {/*    <br/>*/}
+              {/*    <br/>*/}
+              {/*    <FilterBar setCategory={setSearchCategory}/>*/}
+              {/*    {updateResult}*/}
+              {/*  </div>*/}
+              {/*}*/}
 
               <div className="col-10">
                 <ul className="row">
@@ -102,7 +103,8 @@ const SearchMeals = () => {
                 </ul>
               </div>
             </div>
-            {JSON.stringify(results.meals)}
+            {/*{JSON.stringify(results.meals)}*/}
+            <Footer/>
           </div>
         </>
   )

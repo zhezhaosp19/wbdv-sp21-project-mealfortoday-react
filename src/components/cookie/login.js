@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
 import Header from "../partials/header";
+import Footer from "../partials/footer";
 
 const Login = (
     users=[],
@@ -78,6 +79,7 @@ const Login = (
                 </form>
 
             </div>
+            <Footer/>
         </>
     )
 

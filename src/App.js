@@ -6,6 +6,7 @@ import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/details/meal_details";
 import ProfilePage from "./components/cookie/profile-page";
 
+
 function App() {
   return (
       <div className="container-fluid">
