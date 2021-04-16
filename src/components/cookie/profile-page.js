@@ -47,8 +47,8 @@ class ProfilePage extends React.Component{
             <>
                 <Header/>
                 <div className="container">
-                    <h1>Profile {this.state.profile.username} !</h1>
-                    {JSON.stringify(this.state.profile)}
+                    <h1>Profile</h1>
+                    <br/>
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-3 col-form-label">Username</label>
                         <div className="col-sm-9">
@@ -74,7 +74,7 @@ class ProfilePage extends React.Component{
                     </div>
 
                     <div className="form-group row">
-                        <label htmlFor="password" className="col-sm-3 col-form-label">Password</label>
+                        <label htmlFor="password" className="col-sm-3 col-form-label">Reset Password</label>
                         <div className="col-sm-9">
                             <input onChange={e => this.onChangeHandler(e)}
                                    value={this.state.password}
@@ -84,12 +84,12 @@ class ProfilePage extends React.Component{
                     </div>
 
                     <div className="form-group row">
-                        <label htmlFor="passwordConfirm" className="col-sm-3 col-form-label">Confirm Password</label>
+                        <label htmlFor="passwordConfirm" className="col-sm-3 col-form-label">Validate Password</label>
                         <div className="col-sm-9">
                             <input onChange={e => this.onChangeHandler(e)}
                                    value={this.state.passwordConfirm}
                                    type="password" name="passwordConfirm" id="passwordConfirm" className="form-control"
-                                   placeholder="confirm your password"/>
+                                   placeholder="validate password"/>
                         </div>
                     </div>
 
@@ -115,7 +115,6 @@ class ProfilePage extends React.Component{
                         </div>
                     </div>
 
-                    {/*TODO: CREATE LINK*/}
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label"/>
                         <div className="col-sm-12">
@@ -123,7 +122,12 @@ class ProfilePage extends React.Component{
                                   onClick={this.updateHandle}>
                                 Update
                             </button>
-                            <br/>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label"/>
+                        <div className="col-sm-12">
                             <button className="btn btn-danger form-control"
                                     onClick={this.logoutHandle}>
                                 Logout

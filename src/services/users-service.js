@@ -24,8 +24,19 @@ const logout = () =>
         credentials: "include"
     })
 
+const login = (user) =>
+    fetch(`${USER_URL}/login`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+
 export default {
     register,
     profile,
-    logout
+    logout,
+    login
 }

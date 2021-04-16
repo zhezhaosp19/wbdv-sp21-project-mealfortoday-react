@@ -8,6 +8,7 @@ class Register extends React.Component {
     state = {
         username: '',
         password: '',
+        validatePassword: '',
         email: '',
         role: 'Client',
         birthday: ''
@@ -37,6 +38,10 @@ class Register extends React.Component {
             alert('Please enter your birthday!')
             return;
         }
+        if(this.state.password !== '' && this.state.password !== this.state.validatePassword) {
+            alert('Passwords do not match!')
+            return;
+        }
 
         userService.register(user)
             .then((newUser) => {
@@ -54,6 +59,7 @@ class Register extends React.Component {
                 <Header/>
                 <div className="container">
                     <h1>Register</h1>
+                    <br/>
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
                         <div className="col-sm-10">
@@ -65,12 +71,22 @@ class Register extends React.Component {
                     </div>
 
                     <div className="form-group row">
-                        <label htmlFor="password" className="col-sm-2 col-form-label">password</label>
+                        <label htmlFor="password" className="col-sm-2 col-form-label">Password</label>
                         <div className="col-sm-10">
-                            <input onChange={e => this.onChangeHandler(e)}
+                            <input onChange={e => this.onChangeHandler(e)}P
                                    value={this.state.password}
                                    type="password" name="password" id="password" className="form-control"
                                    placeholder="password"/>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="password" className="col-sm-2 col-form-label">Validate Password</label>
+                        <div className="col-sm-10">
+                            <input onChange={e => this.onChangeHandler(e)}
+                                   value={this.state.validatePassword}
+                                   type="password" name="validatePassword" id="validatePassword" className="form-control"
+                                   placeholder="validate password"/>
                         </div>
                     </div>
 
