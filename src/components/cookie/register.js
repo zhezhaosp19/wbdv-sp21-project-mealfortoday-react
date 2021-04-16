@@ -125,7 +125,7 @@ class Register extends React.Component {
 
                     </div>
                 </div>
-                <Footer/>
+
             </>
         )
     }

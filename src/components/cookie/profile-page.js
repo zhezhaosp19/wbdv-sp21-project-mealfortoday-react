@@ -130,7 +130,7 @@ class ProfilePage extends React.Component{
                     </div>
 
                 </div>
-                <Footer/>
+
             </>
         )
     }

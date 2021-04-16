@@ -4,6 +4,7 @@ import Header from "../partials/header";
 import SearchCard from "../search/search_card"
 import mealsService from '../../services/meals-service'
 import ReviewCard from "./review-card"
+import Footer from "../partials/footer";
 
 const MealDetails = () => {
   const history = useHistory()

@@ -10,8 +10,15 @@ export const findMealByCategory = (category) =>
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     .then(response => response.json())
 
+export const findAllCategories = () => {
+  fetch(`https://https://www.themealdb.com/api/json/v1/1/list.php?c=list`)
+  .then(response => response.json())
+}
+
+
 export default {
   findMealByTitle,
   findMealById,
-  findMealByCategory
+  findMealByCategory,
+  findAllCategories
 }
