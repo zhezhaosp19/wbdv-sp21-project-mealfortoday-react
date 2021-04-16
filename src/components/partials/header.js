@@ -1,5 +1,6 @@
 import React from 'react'
 import { Nav, Navbar, Form, Button, FormControl, NavDropdown } from 'react-bootstrap';
+import "./header.css"
 
 const Header = () => {
   return (
@@ -78,7 +79,7 @@ const Header = () => {
         {/*</Navbar>*/}
 
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
-          <Navbar.Brand href="#home">MealForToday</Navbar.Brand>
+          <Navbar.Brand href="/">MealForToday</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
@@ -94,7 +95,7 @@ const Header = () => {
             </Nav>
               {/*<Form inline>*/}
               {/*  <FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
-              {/*  <Button variant="outline-success">Search</Button>*/}
+              {/*  <Button variant="outline-success" >Search</Button>*/}
               {/*</Form>*/}
             <Nav>
                <Nav.Link href="/login">Login</Nav.Link>

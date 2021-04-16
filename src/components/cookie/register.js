@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import userService from '../../services/users-service';
 import {Link, useHistory} from "react-router-dom";
 import Header from "../partials/header";
+import Footer from "../partials/footer";
 
 class Register extends React.Component {
     state = {
@@ -127,6 +128,7 @@ class Register extends React.Component {
 
                     </div>
                 </div>
+
             </>
         )
     }
