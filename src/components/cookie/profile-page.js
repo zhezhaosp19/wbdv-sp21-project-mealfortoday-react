@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "../partials/header";
 import {Link} from "react-router-dom";
 import userService from '../../services/users-service';
@@ -43,6 +43,7 @@ class ProfilePage extends React.Component{
     }
 
     render() {
+
         return (
             <>
                 <Header/>
@@ -69,6 +70,22 @@ class ProfilePage extends React.Component{
                                 <option value="Female">Female</option>
                                 <option value="Others">Other</option>
                                 <option value="Secret">Don't want answer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="role" className="col-sm-3 col-form-label">Role</label>
+                        <div className="col-sm-9">
+                            <select onChange={(e) => {
+                                                this.onChangeHandler(e)
+                                                this.state.role = e.target.value}}
+                                    value={this.state.role}
+                                    className="form-control"
+                                    name="gender" id="gender">
+                                <option value="Client" selected>Client</option>
+                                <option value="Chef">Chef</option>
+                                <option value="Admin">Admin</option>
                             </select>
                         </div>
                     </div>
@@ -115,6 +132,19 @@ class ProfilePage extends React.Component{
                         </div>
                     </div>
 
+                    {
+                        this.state.role === "Chef" &&
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label"/>
+                            <div className="col-sm-12">
+                                <button className="btn btn-success form-control"
+                                        onClick={this.updateHandle}>
+                                    Create Recipe
+                                </button>
+                            </div>
+                        </div>
+
+                    }
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label"/>
                         <div className="col-sm-12">
@@ -139,6 +169,7 @@ class ProfilePage extends React.Component{
 
             </>
         )
+        console.log(this.state.role)
     }
 
 }
