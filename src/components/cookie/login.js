@@ -24,6 +24,8 @@ class Login extends React.Component {
             .then(actualUser => {
                 if(actualUser === 0) {
                     alert("You are not the user of MealForToday.\n Please register first!")
+                } else if (actualUser === 1) {
+                    alert("Wrong password!")
                 } else {
                     this.props.history.push('/search')
                 }
