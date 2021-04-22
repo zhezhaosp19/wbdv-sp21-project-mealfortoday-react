@@ -48,7 +48,10 @@ class Register extends React.Component {
                 if (newUser === 0) {
                     alert("Username is already taken")
                 } else {
-                    this.props.history.push('/profile')
+                    this.props.history.push({
+                        pathname: '/profile',
+                        state: {detail: this.state}
+                    })
                 }
             })
     }

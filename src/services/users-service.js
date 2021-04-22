@@ -34,9 +34,14 @@ const login = (user) =>
         }
     }).then(response => response.json())
 
+const getUsername = () =>
+    fetch(`${USER_URL}/profile`)
+        .then(response => response.json())
+
 export default {
     register,
     profile,
     logout,
-    login
+    login,
+    getUsername
 }

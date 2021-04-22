@@ -36,3 +36,34 @@ code {
 .briefInfo{
   line-height: 3;
 }
+
+.image {
+  width: 180px;
+  height: 180px;
+  border-radius: 90px;
+}
+
+.profile {
+  margin-top: 50px;
+}
+
+.edit-profile-button {
+  border: 1px solid grey;
+}
+
+.cell-box {
+  margin-top: 60px;
+  /*margin: 2px auto;*/
+  width: 110%;
+}
+
+.cell {
+  margin: 1px auto;
+  padding: 13px 0;
+  font-size: 15px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,50,0.3);
+  background-color: white;
+}
+
+.each-cell {
+}
