@@ -5,6 +5,7 @@ import SearchCard from "../search/search_card"
 import mealsService from '../../services/meals-service'
 import ReviewCard from "./review-card"
 import Footer from "../partials/footer";
+import "./meal-details.css"
 
 const MealDetails = () => {
   const history = useHistory()
@@ -156,7 +157,7 @@ const MealDetails = () => {
   return (
     <>
       <Header/>
-      <div className="container">
+      <div className="container mt-5">
         <button className="btn btn-primary" onClick={()=>{history.goBack()}}>Back</button>
         <h1>{meal.strMeal}</h1>
         <i class="bi bi-star"></i>

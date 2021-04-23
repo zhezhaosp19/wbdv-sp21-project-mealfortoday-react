@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import userService from '../../services/users-service';
 import Footer from "../partials/footer";
 
-class ProfilePage extends React.Component{
+class UpdateProfile extends React.Component{
     state = {
         profile : {
             username: '',
@@ -34,12 +34,17 @@ class ProfilePage extends React.Component{
     updateHandle = () => {
         if(this.state.password !== '' && this.state.password !== this.state.passwordConfirm) {
             alert('Passwords do not match!')
+        } else {
+            this.props.history.push({
+                pathname: `/profile/${this.state.profile.username}`,
+            })
         }
     }
 
     logoutHandle = () => {
         userService.logout()
-            .then(status => this.props.history.push('/'))
+            .then(() => this.props.history.push('/'))
+
     }
 
     render() {
@@ -177,4 +182,4 @@ class ProfilePage extends React.Component{
 
 }
 
-export default ProfilePage
+export default UpdateProfile

@@ -22,7 +22,7 @@ const logout = () =>
     fetch(`${USER_URL}/logout`, {
         method: 'POST',
         credentials: "include"
-    })
+    }).then(response => response.json())
 
 const login = (user) =>
     fetch(`${USER_URL}/login`, {
@@ -34,9 +34,14 @@ const login = (user) =>
         }
     }).then(response => response.json())
 
+const getUsername = () =>
+    fetch(`${USER_URL}/profile`)
+        .then(response => response.json())
+
 export default {
     register,
     profile,
     logout,
-    login
+    login,
+    getUsername
 }

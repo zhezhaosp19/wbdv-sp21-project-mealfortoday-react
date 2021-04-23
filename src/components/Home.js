@@ -9,19 +9,27 @@ import Footer from "./partials/footer";
 const Home = () => {
   const [recipes, setRecipes] = useState({meals:[]});
   const [index, setIndex] = useState(0);
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState("Jose")
 
 // check whether the user is logged in
   useEffect(() => {
     { user &&
-      mealsService.findMealByCategory("Seafood")
-      .then(recipes => setRecipes(recipes))
+    mealsService.findLastedRecipes()
+    .then(recipes => {
+      setRecipes(recipes)
+    })
     }
     { !user &&
-    mealsService.findMealByTitle("beef")
-    .then(recipes => setRecipes(recipes))
+    mealsService.find10RandomRecipes()
+    .then((recipes) => {
+      setRecipes(recipes)
+    })
+    .then(console.log(1))
     }
+  }, [])
 
+
+  useEffect(() => {
     const lastIndex = 9
     if (index < 0) {
       setIndex(lastIndex)
@@ -29,7 +37,7 @@ const Home = () => {
     if (index > lastIndex) {
       setIndex(0)
     }
-  }, [index, recipes])
+  }, [index])
 
   useEffect(() => {
     const slider = setInterval(() => {
@@ -56,9 +64,17 @@ const Home = () => {
 
           <section className="section">
             <div className="title">
-              <h2>
-                <span>/</span> Welcome Holly!
-              </h2>
+              {
+                user && <h2>
+                  <span>/</span> Welcome {user}! Here are our latest recipes!
+                </h2>
+              }
+              {
+                !user && <h2>
+                  <span>/</span> Welcome! Want to try something new?
+                </h2>
+              }
+
             </div>
             <div className="section-center">
               {

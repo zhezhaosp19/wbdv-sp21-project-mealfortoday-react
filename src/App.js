@@ -4,13 +4,15 @@ import Register from "./components/cookie/register";
 import Login from "./components/cookie/login";
 import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/details/meal_details";
-import ProfilePage from "./components/cookie/profile-page";
+import UpdateProfile from "./components/cookie/update-profile";
 import Footer from "./components/partials/footer";
 import CreateRecipe from "./components/create-recipe";
+import Profile from "./components/cookie/profile";
+import "./App.css"
 
 function App() {
   return (
-      <div className="page-container">
+      <div className="page-container ">
           <div className="wrapper">
             <BrowserRouter>
               <div className="content">
@@ -36,8 +38,8 @@ function App() {
                 </Route>
                 <Route
                     exact={true}
-                    path="/profile"
-                    component={ProfilePage}>
+                    path="/update-profile/:username"
+                    component={UpdateProfile}>
                 </Route>
                 <Route path="/:searchTitle/details/:idMeal" exact={true}>
                   <MealDetails/>
@@ -45,11 +47,16 @@ function App() {
                 <Route path="/create" exact={true}>
                   <CreateRecipe/>
                 </Route>
+                <Route path={"/profile/:username"}
+                       exact={true}
+                       component={Profile}>
+                </Route>
               </div>
 
             </BrowserRouter>
+            {/*<Footer/>*/}
           </div>
-        {/*<Footer/>*/}
+
       </div>
   );
 }
