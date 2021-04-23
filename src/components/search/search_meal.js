@@ -27,7 +27,7 @@ const SearchMeals = () => {
   return (
       <>
         <Header/>
-        <div className=''>
+        <div>
           <div className="container-fluid mt-5">
 
             <h1>Search Meals</h1>

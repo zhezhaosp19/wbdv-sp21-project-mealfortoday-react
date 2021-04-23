@@ -8,10 +8,11 @@ import UpdateProfile from "./components/cookie/update-profile";
 import Footer from "./components/partials/footer";
 import CreateRecipe from "./components/create-recipe";
 import Profile from "./components/cookie/profile";
+import "./App.css"
 
 function App() {
   return (
-      <div className="page-container">
+      <div className="page-container ">
           <div className="wrapper">
             <BrowserRouter>
               <div className="content">
@@ -53,8 +54,9 @@ function App() {
               </div>
 
             </BrowserRouter>
+            {/*<Footer/>*/}
           </div>
-        {/*<Footer/>*/}
+
       </div>
   );
 }
