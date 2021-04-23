@@ -3,7 +3,14 @@ import {Link} from "react-router-dom";
 import Header from "./partials/header";
 
 const CreateRecipe = () => {
+    const [recipe, setRecipe] = useState({
+        name: '',
+        area:'',
+        category:'',
+        ingredients: [],
+        instructions: []
 
+    })
     return (
         <>
             <Header/>
@@ -25,7 +32,7 @@ const CreateRecipe = () => {
                 <label htmlFor="area" className="col-sm-2 col-form-label">Area</label>
                 <div className="col-sm-10">
                     <input
-                           value={""}
+                           //value={""}
                            type="password" name="password" id="password" className="form-control"
                            placeholder="area"/>
                 </div>
