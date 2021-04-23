@@ -1,14 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from "../partials/header";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import userService from "../../services/users-service";
 
-const Profile = (props) => {
-    const detail = props.location.state.detail
+const Profile = () => {
+    const {username} = useParams()
+    const [profile, setProfile] = useState([])
+    const [currentUser, setCurrentUser] = useState('')
+    useEffect(() => {
+            userService.profile()
+                .then(profile => {
+                    setProfile(profile)
+                })
+    },[])
     return (
         <>
             <Header/>
             <div className="container profile">
-                {/*<h1>Profile</h1>*/}
 
                 <div style={{display: 'flex', justifyContent: "space-around", margin: '18px 0px'}}>
                     <div>
@@ -17,15 +25,15 @@ const Profile = (props) => {
                     </div>
                     <div>
                         <div style={{display: 'flex', justifyContent: "space-between", width: "150%"}}>
-                            <h2>{detail.username}</h2>
+                            <h2>{profile.username}</h2>
                             <div className="float-right">
-                                <Link to="/update-profile" className="btn edit-profile-button">Edit Profile</Link>
+                                <Link to={`/update-profile/${profile.username}`} className="btn edit-profile-button">Edit Profile</Link>
                             </div>
 
                         </div>
 
                         <div style={{display: 'flex', marginTop: 20, justifyContent: "space-between", width: "150%"}}>
-                            {detail.role === "Client" &&
+                            {profile.role === "Chef" &&
                                 <>
                                     <h5>5 posts</h5>
                                 </>

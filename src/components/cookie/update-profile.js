@@ -36,15 +36,15 @@ class UpdateProfile extends React.Component{
             alert('Passwords do not match!')
         } else {
             this.props.history.push({
-                pathname: '/profile',
-                state: {detail: this.state}
+                pathname: `/profile/${this.state.profile.username}`,
             })
         }
     }
 
     logoutHandle = () => {
         userService.logout()
-            .then(status => this.props.history.push('/'))
+            .then(() => this.props.history.push('/'))
+
     }
 
     render() {

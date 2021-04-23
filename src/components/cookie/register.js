@@ -10,7 +10,7 @@ class Register extends React.Component {
         password: '',
         validatePassword: '',
         email: '',
-        role: 'Client',
+        role: '',
         birthday: ''
     }
 
@@ -49,8 +49,7 @@ class Register extends React.Component {
                     alert("Username is already taken")
                 } else {
                     this.props.history.push({
-                        pathname: '/profile',
-                        state: {detail: this.state}
+                        pathname: `/profile/${this.state.username}`,
                     })
                 }
             })

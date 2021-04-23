@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Nav, Navbar, Form, Button, FormControl, NavDropdown } from 'react-bootstrap';
 import "./header.css"
+import userService from "../../services/users-service";
 
 const Header = () => {
+    const [profile, setProfile] = useState([])
+    useEffect(() => {
+        userService.profile()
+            .then(profile => {
+                setProfile(profile)
+            })
+    },[])
   return (
       // <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       //   <a className="navbar-brand" href="../index.html">MealForToday</a>
@@ -100,7 +108,7 @@ const Header = () => {
             <Nav>
                <Nav.Link href="/login">Login</Nav.Link>
                <Nav.Link href="/register">Register</Nav.Link>
-               <Nav.Link href="/profile">Profile</Nav.Link>
+               <Nav.Link href={`/profile/${profile.username}`}>Profile</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

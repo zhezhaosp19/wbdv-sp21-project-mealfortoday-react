@@ -38,7 +38,7 @@ function App() {
                 </Route>
                 <Route
                     exact={true}
-                    path="/update-profile"
+                    path="/update-profile/:username"
                     component={UpdateProfile}>
                 </Route>
                 <Route path="/:searchTitle/details/:idMeal" exact={true}>
@@ -47,7 +47,7 @@ function App() {
                 <Route path="/create" exact={true}>
                   <CreateRecipe/>
                 </Route>
-                <Route path="/profile"
+                <Route path={"/profile/:username"}
                        exact={true}
                        component={Profile}>
                 </Route>
