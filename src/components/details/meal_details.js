@@ -11,6 +11,8 @@ import listAllIngredients from "./listAllIngredients"
 import showInstructions from "./showInstructions"
 import displaySimilarDishes from "./displaySimilarDishes"
 import reviews from "./reviews"
+import userService from "../../services/users-service"
+import Profile from "../cookie/profile"
 
 const MealDetails = () => {
   const history = useHistory()
@@ -19,6 +21,14 @@ const MealDetails = () => {
   const [results, setResults] = useState({meals:[]})
   const [isFavorite, setIsFavorite] = useState(false)
   const [similarDishesCount, setSimilarDishesCount] = useState(0)
+  const [currentUser, setCurrentUser] = useState([])
+
+  useEffect(() => {
+    userService.profile()
+      .then(currUser => {
+        setCurrentUser(currUser)
+      })
+  },[])
 
   useEffect(() => {
     findMealById()
@@ -38,6 +48,7 @@ const MealDetails = () => {
   const setFavorite = (set) => {
     if (set) {
       setIsFavorite(true)
+
     } else {
       setIsFavorite(false)
     }
@@ -50,8 +61,11 @@ const MealDetails = () => {
         <button className="btn btn-primary" onClick={()=>{history.goBack()}}>Back</button>
         <h1>{meal.strMeal}</h1>
         <div>
+          Viewed by
+          <Link to={`/profile/${currentUser.username}`}> {currentUser.username}</Link>
+          <br/>
           Posted by
-          <Link to="/profile/username"> user</Link>
+          <Link to={`/profile/${currentUser.username}`}> </Link>
         </div>
         {!isFavorite && <i onClick={() => setFavorite(true)} className="far fa-star"></i>}
         {isFavorite && <i onClick={() => setFavorite(false)} className="fas fa-star"></i>}
