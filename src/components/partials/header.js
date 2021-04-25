@@ -4,11 +4,11 @@ import "./header.css"
 import userService from "../../services/users-service";
 
 const Header = () => {
-    const [profile, setProfile] = useState([])
+    const [currentUser, setCurrentUser] = useState([])
     useEffect(() => {
         userService.profile()
             .then(profile => {
-                setProfile(profile)
+                setCurrentUser(profile)
             })
     },[])
   return (
@@ -108,7 +108,11 @@ const Header = () => {
             <Nav>
                <Nav.Link href="/login">Login</Nav.Link>
                <Nav.Link href="/register">Register</Nav.Link>
-               <Nav.Link href={`/profile/${profile.username}`}>Profile</Nav.Link>
+                {
+                    currentUser &&
+                    <Nav.Link href={`/profile/${currentUser.username}`}>Profile</Nav.Link>
+                }
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>

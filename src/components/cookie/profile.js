@@ -51,8 +51,8 @@ const Profile = () => {
                         {/*    <h5>5 followings</h5>*/}
                         {/*</div>*/}
                         <div>
-                            <p style={{fontSize: 20, marginTop: 10}}>Bio</p>
-                            <a href="https://www.google.com">https://www.google.com</a>
+                            <p style={{fontSize: 20, marginTop: 10}}>{currentUser.bio}</p>
+                            {/*<a href="https://www.google.com">https://www.google.com</a>*/}
                         </div>
                     </div>
                 </div>
