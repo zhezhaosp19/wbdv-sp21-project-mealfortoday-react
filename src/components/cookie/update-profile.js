@@ -6,22 +6,29 @@ import Footer from "../partials/footer";
 
 class UpdateProfile extends React.Component{
     state = {
-        profile : {
-            username: '',
-            password: '',
-            passwordConfirm: '',
-            role: '',
-            area: '',
-            bio: ''
-        }
+        username: '',
+        role: '',
+        email: '',
+        gender: '',
+        area: '',
+        bio: '',
+        flavor: ''
     }
 
     componentDidMount() {
         userService.profile()
-            .then((profile) => this.setState({
-                profile: profile
-            }))
-        console.log(this.state.profile.username)
+            .then((profile) => {
+                console.log(profile)
+                this.setState({
+                    username: profile.username,
+                    role: profile.role,
+                    email: profile.email,
+                    gender: profile.gender,
+                    area: profile.area,
+                    bio: profile.bio,
+                    flavor: profile.flavor
+                })
+            })
     }
 
     onChangeHandler = (e) => {
@@ -31,14 +38,14 @@ class UpdateProfile extends React.Component{
         })
     }
 
-    updateHandle = () => {
-        if(this.state.password !== '' && this.state.password !== this.state.passwordConfirm) {
-            alert('Passwords do not match!')
-        } else {
-            this.props.history.push({
-                pathname: `/profile/${this.state.profile.username}`,
-            })
-        }
+    updateHandle = (profile) => {
+        userService.updateProfile(profile)
+            .then(
+                () => {
+                this.props.history.push({
+                    pathname: `/profile/${this.state.username}`,
+                }
+        )})
     }
 
     logoutHandle = () => {
@@ -58,9 +65,28 @@ class UpdateProfile extends React.Component{
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-3 col-form-label">Username</label>
                         <div className="col-sm-9">
-                            <input value={this.state.profile.username}
+                            <input value={this.state.username}
                                 type="text" name="username" id="username" className="form-control"
                                 readOnly/>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="role" className="col-sm-3 col-form-label">Role</label>
+                        <div className="col-sm-9">
+                            <input value={this.state.role}
+                                   type="text" name="role" id="role" className="form-control"
+                                   readOnly/>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="email" className="col-sm-3 col-form-label">Email</label>
+                        <div className="col-sm-9">
+                            <input value={this.state.email}
+                                   onChange={e => this.onChangeHandler(e)}
+                                   type="text" name="email" id="email" className="form-control"
+                            />
                         </div>
                     </div>
 
@@ -68,7 +94,7 @@ class UpdateProfile extends React.Component{
                         <label htmlFor="gender" className="col-sm-3 col-form-label">Gender</label>
                         <div className="col-sm-9">
                             <select onChange={e => this.onChangeHandler(e)}
-                                    value={this.state.role}
+                                    value={this.state.gender}
                                     className="form-control"
                                     name="gender" id="gender">
                                 <option value="Male" selected>Male</option>
@@ -80,43 +106,7 @@ class UpdateProfile extends React.Component{
                     </div>
 
                     <div className="form-group row">
-                        <label htmlFor="role" className="col-sm-3 col-form-label">Role</label>
-                        <div className="col-sm-9">
-                            <select onChange={(e) => {
-                                                this.onChangeHandler(e)
-                                                this.state.role = e.target.value}}
-                                    value={this.state.role}
-                                    className="form-control"
-                                    name="gender" id="gender">
-                                <option value="Client" selected>Client</option>
-                                <option value="Chef">Chef</option>
-                                <option value="Admin">Admin</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="form-group row">
-                        <label htmlFor="password" className="col-sm-3 col-form-label">Reset Password</label>
-                        <div className="col-sm-9">
-                            <input onChange={e => this.onChangeHandler(e)}
-                                   value={this.state.password}
-                                   type="password" name="password" id="password" className="form-control"
-                                   placeholder="password"/>
-                        </div>
-                    </div>
-
-                    <div className="form-group row">
-                        <label htmlFor="passwordConfirm" className="col-sm-3 col-form-label">Validate Password</label>
-                        <div className="col-sm-9">
-                            <input onChange={e => this.onChangeHandler(e)}
-                                   value={this.state.passwordConfirm}
-                                   type="password" name="passwordConfirm" id="passwordConfirm" className="form-control"
-                                   placeholder="validate password"/>
-                        </div>
-                    </div>
-
-                    <div className="form-group row">
-                        <label htmlFor="passwordConfirm" className="col-sm-3 col-form-label">Area</label>
+                        <label htmlFor="area" className="col-sm-3 col-form-label">Area</label>
                         <div className="col-sm-9">
                             <input onChange={e => this.onChangeHandler(e)}
                                    value={this.state.area}
@@ -126,13 +116,25 @@ class UpdateProfile extends React.Component{
                     </div>
 
                     <div className="form-group row">
-                        <label htmlFor="passwordConfirm" className="col-sm-3 col-form-label">Bio</label>
+                        <label htmlFor="area" className="col-sm-3 col-form-label">Bio</label>
                         <div className="col-sm-9">
                             <textarea onChange={e => this.onChangeHandler(e)}
                                       value={this.state.bio}
-                                      rows={6}
+                                      rows={5}
                                       name="bio" id="area" className="form-control"
                                       placeholder="Enter your bio..."
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="flavor" className="col-sm-3 col-form-label">Flavor</label>
+                        <div className="col-sm-9">
+                            <textarea onChange={e => this.onChangeHandler(e)}
+                                      value={this.state.flavor}
+                                      rows={5}
+                                      name="flavor" id="flavor" className="form-control"
+                                      placeholder="Enter your flavors of food..."
                             />
                         </div>
                     </div>
@@ -157,7 +159,10 @@ class UpdateProfile extends React.Component{
                         <label className="col-sm-2 col-form-label"/>
                         <div className="col-sm-12">
                             <button className="btn btn-primary form-control"
-                                  onClick={this.updateHandle}>
+                                  onClick={() => {
+                                      // const {gender, area, bio ,flavor, username} = this.state
+                                      this.updateHandle(this.state)
+                                  }}>
                                 Update
                             </button>
                         </div>
@@ -177,7 +182,6 @@ class UpdateProfile extends React.Component{
 
             </>
         )
-        console.log(this.state.role)
     }
 
 }

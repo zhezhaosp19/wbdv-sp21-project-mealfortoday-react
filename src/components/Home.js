@@ -4,22 +4,30 @@ import Header from "./partials/header";
 // import meals from "./recipes";
 import './home.css'
 import mealsService from "../services/meals-service";
+import userService from '../services/users-service';
 import Footer from "./partials/footer";
 
 const Home = () => {
   const [recipes, setRecipes] = useState({meals:[]});
   const [index, setIndex] = useState(0);
-  const [user, setUser] = useState("Jose")
+  // const [user, setUser] = useState("")
+  const [currentUser, setCurrentUser] = useState([])
+  useEffect(() => {
+    userService.profile()
+        .then(currUser => {
+          setCurrentUser(currUser)
+        })
+  },[])
 
 // check whether the user is logged in
   useEffect(() => {
-    { user &&
+    { currentUser &&
     mealsService.findLastedRecipes()
     .then(recipes => {
       setRecipes(recipes)
     })
     }
-    { !user &&
+    { !currentUser &&
     mealsService.find10RandomRecipes()
     .then((recipes) => {
       setRecipes(recipes)
@@ -65,12 +73,12 @@ const Home = () => {
           <section className="section">
             <div className="title">
               {
-                user && <h2>
-                  <span>/</span> Welcome {user}! Here are our latest recipes!
+                currentUser && <h2>
+                  <span>/</span> Welcome {currentUser.username}! Here are our latest recipes!
                 </h2>
               }
               {
-                !user && <h2>
+                !currentUser && <h2>
                   <span>/</span> Welcome! Want to try something new?
                 </h2>
               }

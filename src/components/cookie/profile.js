@@ -5,12 +5,12 @@ import userService from "../../services/users-service";
 
 const Profile = () => {
     const {username} = useParams()
-    const [profile, setProfile] = useState([])
-    const [currentUser, setCurrentUser] = useState('')
+    // console.log(username)
+    const [currentUser, setCurrentUser] = useState([])
     useEffect(() => {
             userService.profile()
-                .then(profile => {
-                    setProfile(profile)
+                .then(currUser => {
+                    setCurrentUser(currUser)
                 })
     },[])
     return (
@@ -25,40 +25,66 @@ const Profile = () => {
                     </div>
                     <div>
                         <div style={{display: 'flex', justifyContent: "space-between", width: "150%"}}>
-                            <h2>{profile.username}</h2>
-                            <div className="float-right">
-                                <Link to={`/update-profile/${profile.username}`} className="btn edit-profile-button">Edit Profile</Link>
-                            </div>
-
-                        </div>
-
-                        <div style={{display: 'flex', marginTop: 20, justifyContent: "space-between", width: "150%"}}>
-                            {profile.role === "Chef" &&
-                                <>
-                                    <h5>5 posts</h5>
-                                </>
+                            {
+                                currentUser.username === username &&
+                                <h2>{currentUser.username}</h2>
                             }
-                            <h5>5 followers</h5>
-                            <h5>5 followings</h5>
+                            {
+                                currentUser.username !== username &&
+                                <h2>{username}</h2>
+                            }
+
+                            {currentUser.username === username &&
+                                <div className="float-right">
+                                    <Link to={`/update-profile/${currentUser.username}`} className="btn edit-profile-button">Edit Profile</Link>
+                                </div>
+                            }
                         </div>
+
+                        {/*<div style={{display: 'flex', marginTop: 20, justifyContent: "space-between", width: "150%"}}>*/}
+                        {/*    {currentUser.role === "Chef" &&*/}
+                        {/*    <>*/}
+                        {/*        <h5>5 posts</h5>*/}
+                        {/*    </>*/}
+                        {/*    }*/}
+                        {/*    <h5>5 followers</h5>*/}
+                        {/*    <h5>5 followings</h5>*/}
+                        {/*</div>*/}
                         <div>
-                            <p style={{fontSize: 20, marginTop: 10}}>Bio</p>
-                            <a href="https://www.google.com">https://www.google.com</a>
+                            <p style={{fontSize: 20, marginTop: 10}}>{currentUser.bio}</p>
+                            {/*<a href="https://www.google.com">https://www.google.com</a>*/}
                         </div>
                     </div>
                 </div>
                 <div>
                     <div className="cell-box">
                         <div className="form-group row cell">
-                            <div className="col-6 each-cell">
-                                Your posts
-                            </div>
-                            <div className="col-6 each-cell">
-                                Your Favorites
-                            </div>
+                            {
+                                currentUser.role === "Chef" &&
+                                <>
+                                    <div className="col-6 each-cell">
+                                        Your posts
+                                    </div>
+                                    <div className="col-6 each-cell">
+                                        Your Favorites
+                                    </div>
+                                </>
+                            }
+                            {
+                                currentUser.role !== "Chef" &&
+                                <>
+                                    <div className="col-12 each-cell">
+                                        Your Favorites
+                                    </div>
+                                </>
+                            }
+
+
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </>
 

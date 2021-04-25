@@ -34,14 +34,20 @@ const login = (user) =>
         }
     }).then(response => response.json())
 
-const getUsername = () =>
-    fetch(`${USER_URL}/profile`)
-        .then(response => response.json())
+const updateProfile = (profile) =>
+    fetch(`${USER_URL}/editprofile`, {
+        method: 'POST',
+        body: JSON.stringify(profile),
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
 
 export default {
     register,
     profile,
     logout,
     login,
-    getUsername
+    updateProfile
 }
