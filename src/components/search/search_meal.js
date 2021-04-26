@@ -16,7 +16,10 @@ const SearchMeals = () => {
 
   useEffect(() => {
     setSearchTitle(title)
-    if (title) {
+    if (!title || title === "undefined") {
+      mealsService.find10RandomRecipes()
+      .then(results => setResults(results))
+    } else {
       mealsService.findMealByTitle(title)
       .then(results => setResults(results))
       // .then(results => console.log(results.meals))
@@ -60,7 +63,7 @@ const SearchMeals = () => {
               {/*  </div>*/}
               {/*}*/}
 
-              <div className="col-12">
+              <div className="ml-4">
                 <ul className="row">
                   {
                     // results && results.meals && results.meals.map(meal =>
