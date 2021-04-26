@@ -39,6 +39,11 @@ const Profile = () => {
                                     <Link to={`/update-profile/${currentUser.username}`} className="btn edit-profile-button">Edit Profile</Link>
                                 </div>
                             }
+                            {currentUser.role === "Chef" &&
+                            <div className="float-right">
+                                <Link to={"/create"} className="btn edit-profile-button">Create Recipe</Link>
+                            </div>
+                            }
                         </div>
 
                         {/*<div style={{display: 'flex', marginTop: 20, justifyContent: "space-between", width: "150%"}}>*/}
@@ -62,6 +67,8 @@ const Profile = () => {
                             {
                                 currentUser.role === "Chef" &&
                                 <>
+
+
                                     <div className="col-6 each-cell">
                                         Your posts
                                     </div>
