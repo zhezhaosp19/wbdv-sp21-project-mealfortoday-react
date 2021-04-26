@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
 import Header from "./partials/header";
 import recipeService from "../services/recipes-service"
-
+import userService from "../services/users-service"
 
 const CreateRecipe = () => {
-    //const [recipes, setRecipes] = useState([])
+    const [user, setUser] = useState([])
     const [recipe, setRecipe] = useState({
         strMeal: '',
         strInstructions: '',
@@ -26,6 +26,14 @@ const CreateRecipe = () => {
 
     })
 
+    useEffect(() => {
+        userService.profile()
+            .then(currUser => {
+                setUser(currUser)
+                console.log(JSON.stringify(currUser))
+                console.log(JSON.stringify(user))
+            })
+    }, [])
     // const findAllRecipes = () => {
     //     recipeService.findAllRecipes()
     //         .then(response => setRecipes([...recipes, response]))
@@ -237,13 +245,13 @@ const CreateRecipe = () => {
                     <label className="col-sm-2 col-form-label">User ID</label>
                     <div className="col-sm-10">
                         <input onChange={(e) => {
-                            recipe.strMeasure2 = e.target.value
+                            recipe.username = e.target.value
                             setRecipe(recipe)
                         }}
                                readOnly
                                type="text"
                                className="form-control"
-                               placeholder="UserId"/>
+                               placeholder={user.username}/>
                     </div>
                 </div>
                 <div className="form-group row">
