@@ -11,7 +11,7 @@ const findMealByCategory = (category) =>
     .then(response => response.json())
 
 const findAllCategories = () => {
-  fetch(`https://https://www.themealdb.com/api/json/v1/1/list.php?c=list`)
+  fetch(`https://www.themealdb.com/api/json/v1/1/list.php?c=list`)
   .then(response => response.json())
 }
 
@@ -29,6 +29,12 @@ const findLastedRecipes = () => {
   )
 }
 
+const findRecipesFromMongoDB = (title) => {
+  return fetch(`http://localhost:4000/api/recipes/${title}`)
+  .then(response => response.json())
+
+}
+
 
 export default {
   findMealByTitle,
@@ -36,5 +42,6 @@ export default {
   findMealByCategory,
   findAllCategories,
   find10RandomRecipes,
-  findLastedRecipes
+  findLastedRecipes,
+  findRecipesFromMongoDB
 }
