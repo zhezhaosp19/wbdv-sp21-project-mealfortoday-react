@@ -6,6 +6,10 @@ const findMealById = (idMeal) =>
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
     .then(response => response.json())
 
+const findMealByIdFromLocal = (idMeal) =>
+    fetch(`http://localhost:4000/api/recipes/id/${idMeal}`)
+    .then(response => response.json())
+
 const findMealByCategory = (category) =>
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     .then(response => response.json())
@@ -39,6 +43,7 @@ const findRecipesFromMongoDB = (title) => {
 export default {
   findMealByTitle,
   findMealById,
+  findMealByIdFromLocal,
   findMealByCategory,
   findAllCategories,
   find10RandomRecipes,
