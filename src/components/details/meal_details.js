@@ -58,7 +58,9 @@ const MealDetails = () => {
   const setFavorite = (set) => {
     if (set) {
       setIsFavorite(true)
-
+      favoritesService.addFavoriteToMeal(currentUser.username, idMeal)
+      .then()
+      favoritesService.addFavoriteToUser(currentUser.username, idMeal).then()
     } else {
       setIsFavorite(false)
     }

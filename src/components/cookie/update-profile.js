@@ -12,7 +12,9 @@ class UpdateProfile extends React.Component{
         gender: '',
         area: '',
         bio: '',
-        flavor: ''
+        flavor: '',
+        portrait: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+        // portrait: null
     }
 
     componentDidMount() {
@@ -26,7 +28,8 @@ class UpdateProfile extends React.Component{
                     gender: profile.gender,
                     area: profile.area,
                     bio: profile.bio,
-                    flavor: profile.flavor
+                    flavor: profile.flavor,
+                    portrait: profile.portrait
                 })
             })
     }
@@ -54,6 +57,13 @@ class UpdateProfile extends React.Component{
 
     }
 
+    fileSelecterHandler = (e) => {
+        console.log(e.target.files[0])
+        this.setState({
+            portrait: e.target.files[0]
+        })
+    }
+
     render() {
 
         return (
@@ -61,7 +71,19 @@ class UpdateProfile extends React.Component{
                 <Header/>
                 <div className="container">
                     <h1>Profile</h1>
+                    {/* <br/> */}
+                    <div className="img-profile">
+                        <img className="image"
+                             src={this.state.portrait}/>
+                    </div>
                     <br/>
+                    {/* <div>
+                        <input style={{display: 'none'}} type="file"
+                        onChange={this.fileSelecterHandler}
+                        ref={fileInput => this.fileInput = fileInput}
+                        />
+                        <button className="btn edit-profile-button" onClick={() => this.fileInput.click()}>Pick Image</button>
+                    </div> */}
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-3 col-form-label">Username</label>
                         <div className="col-sm-9">
@@ -77,6 +99,16 @@ class UpdateProfile extends React.Component{
                             <input value={this.state.role}
                                    type="text" name="role" id="role" className="form-control"
                                    readOnly/>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="portrait" className="col-sm-3 col-form-label">Profile Photo</label>
+                        <div className="col-sm-9">
+                            <input value={this.state.portrait}
+                            onChange={e => this.onChangeHandler(e)}
+                                type="text" name="portrait" id="portrait" className="form-control"
+                                />
                         </div>
                     </div>
 

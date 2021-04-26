@@ -11,7 +11,7 @@ const Header = () => {
                 setCurrentUser(profile)
             })
 
-    },[currentUser])
+    },[])
 
 
   return (
