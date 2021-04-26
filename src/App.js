@@ -9,6 +9,7 @@ import Footer from "./components/partials/footer";
 import CreateRecipe from "./components/create-recipe";
 import Profile from "./components/cookie/profile";
 import "./App.css"
+import Favorites from "./components/favorites/favorites"
 
 function App() {
   return (
@@ -50,6 +51,10 @@ function App() {
                 <Route path={"/profile/:username"}
                        exact={true}
                        component={Profile}>
+                </Route>
+                <Route path={"/favorites/:username"}
+                       exact={true}
+                       component={Favorites}>
                 </Route>
               </div>
 
