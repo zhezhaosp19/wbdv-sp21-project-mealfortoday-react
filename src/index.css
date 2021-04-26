@@ -43,6 +43,11 @@ code {
   border-radius: 90px;
 }
 
+.img-profile {
+  vertical-align: middle;
+  display: table-cell;
+}
+
 .profile {
   margin-top: 50px;
 }

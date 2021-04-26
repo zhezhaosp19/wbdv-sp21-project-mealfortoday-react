@@ -10,7 +10,10 @@ const Header = () => {
             .then(profile => {
                 setCurrentUser(profile)
             })
+
     },[])
+
+
   return (
       // <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       //   <a className="navbar-brand" href="../index.html">MealForToday</a>
@@ -106,12 +109,24 @@ const Header = () => {
               {/*  <Button variant="outline-success" >Search</Button>*/}
               {/*</Form>*/}
             <Nav>
-               <Nav.Link href="/login">Login</Nav.Link>
-               <Nav.Link href="/register">Register</Nav.Link>
-                {
-                    currentUser &&
+              {
+                currentUser.length === 0 && (
+                    <Nav.Link href="/login">Login</Nav.Link>
+                )
+              }
+              {
+                currentUser.length === 0 && (
+                    <Nav.Link href="/register">Register</Nav.Link>
+                )
+              }
+              {
+                currentUser.length !== 0 && (
                     <Nav.Link href={`/profile/${currentUser.username}`}>Profile</Nav.Link>
-                }
+                )
+              }
+              {
+                currentUser.length !== 0 && (<Nav.Link href={`/profile/${currentUser.username}`}>Logout</Nav.Link>)
+              }
 
             </Nav>
           </Navbar.Collapse>

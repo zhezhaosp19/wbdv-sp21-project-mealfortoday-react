@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-const SearchCard = ({meal, searchTitle}) => {
+const SearchCardLocal = ({meal, searchTitle}) => {
 
   return (
       <div className="col-3 ml-n2">
@@ -14,7 +14,7 @@ const SearchCard = ({meal, searchTitle}) => {
             {/*<h5 className="card-title">{meal.strMeal}</h5>*/}
             <img src={``}/>
 
-            <Link to={`/${searchTitle}/details/${meal.idMeal}`}>
+            <Link to={`/${searchTitle}/details/${meal._id}`}>
               <h5 className="card-title">{meal.strMeal}</h5>
             </Link>
           </div>
@@ -22,4 +22,4 @@ const SearchCard = ({meal, searchTitle}) => {
       </div>
   )
 }
-export default SearchCard
+export default SearchCardLocal

@@ -9,7 +9,8 @@ import Footer from "./components/partials/footer";
 import CreateRecipe from "./components/create-recipe";
 import Profile from "./components/cookie/profile";
 import "./App.css"
-import Favorites from "./components/favorites/favorites"
+import FavoritesForUser from "./components/favorites/favoritesForUser"
+import UsersForFavorite from "./components/favorites/usersForFavorite"
 
 function App() {
   return (
@@ -52,9 +53,15 @@ function App() {
                        exact={true}
                        component={Profile}>
                 </Route>
+                {/*Display all favorites for a specific user*/}
                 <Route path={"/favorites/:username"}
                        exact={true}
-                       component={Favorites}>
+                       component={FavoritesForUser}>
+                </Route>
+                {/*Display all users that liked a specific recipe*/}
+                <Route path={"/users/favorite/:recipeId"}
+                       exact={true}
+                       component={UsersForFavorite}>
                 </Route>
               </div>
 

@@ -3,7 +3,7 @@ import mealsService from '../../services/meals-service'
 import {Link, useParams, useHistory} from "react-router-dom";
 import Header from "../partials/header";
 import SearchCard from "./search_card";
-import FilterBar from "./filter/filterBar";
+import SearchCardLocal from "./search-card-forLocal"
 import Footer from "../partials/footer";
 import "./search.css"
 
@@ -11,18 +11,30 @@ const SearchMeals = () => {
   const {title} = useParams()
   const [searchTitle, setSearchTitle] = useState("")
   const [results, setResults] = useState({meals: []})
+  const [resultsDB, setResultsDB] = useState()
+  const [cardId, setCardId] = useState("")
 
   const history = useHistory()
 
   useEffect(() => {
     setSearchTitle(title)
-    if (title) {
-      mealsService.findMealByTitle(title)
+    if (!title || title === "undefined") {
+      mealsService.find10RandomRecipes()
       .then(results => setResults(results))
-      // .then(results => console.log(results.meals))
+    } else {
+      mealsService.findRecipesFromMongoDB(title)
+       .then(results1 => setResultsDB(results1))
+
+      mealsService.findMealByTitle(title)
+      .then(results2 => setResults(results2))
+
+      // const newArray = Object.assign({}, results);
+      // newArray['meals'].push(resultsDB);
+      // setResults(newArray)
+
     }
 
-  }, [title])
+  }, [title, resultsDB])
 
   return (
       <>
@@ -60,25 +72,42 @@ const SearchMeals = () => {
               {/*  </div>*/}
               {/*}*/}
 
-              <div className="col-12">
+              <div className="ml-4">
                 <ul className="row">
                   {
-                    // results && results.meals && results.meals.map(meal =>
-                    //     <li className="list-group-item" key={meal.idMeal}>
-                    //       <Link to={`/details/${meal.idMeal}`}>
-                    //         {meal.strMeal}
-                    //       </Link>
-                    //     </li>
-                    // )
                     results && results.meals && results.meals.map(meal =>
                         <SearchCard meal={meal} searchTitle={searchTitle}/>
                     )
                   }
                   {
                     !results.meals &&
-                    <h2>No recipe found...</h2>
+                    <h2>No recipe found from remote database...</h2>
                   }
                 </ul>
+                <br/>
+                {
+                  searchTitle &&
+                      <>
+                        <h2>Recipe created by our chef:</h2>
+                        <ul className="row">
+
+                          {
+                            resultsDB && resultsDB.map(meal =>
+                                <SearchCardLocal meal={meal} searchTitle={searchTitle}/>
+                            )
+                          }
+                          {
+                            !resultsDB &&
+                            <h2 className="ml-3">No recipe found in local database...</h2>
+
+                          }
+                        </ul>
+                      </>
+
+                }
+
+
+
               </div>
             </div>
           </div>

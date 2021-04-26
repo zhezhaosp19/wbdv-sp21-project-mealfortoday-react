@@ -7,10 +7,13 @@ const Profile = () => {
     const {username} = useParams()
     // console.log(username)
     const [currentUser, setCurrentUser] = useState([])
+    const [portrait, setPortrait] = useState("")
     useEffect(() => {
             userService.profile()
                 .then(currUser => {
+                    console.log(currUser)
                     setCurrentUser(currUser)
+                    setPortrait(currUser.portrait)
                 })
     },[])
     return (
@@ -21,7 +24,7 @@ const Profile = () => {
                 <div style={{display: 'flex', justifyContent: "space-around", margin: '18px 0px'}}>
                     <div>
                         <img className="image"
-                             src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"/>
+                             src={portrait}/>
                     </div>
                     <div>
                         <div style={{display: 'flex', justifyContent: "space-between", width: "150%"}}>
