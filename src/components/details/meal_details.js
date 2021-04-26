@@ -86,6 +86,9 @@ const MealDetails = () => {
           <br/>
           Posted by
           <Link to={`/profile/${currentUser.username}`}> </Link>
+          <br/>
+          Liked by
+          <Link to={`/users/favorite/${idMeal}`}> Users</Link>
         </div>
         {!isFavorite && <i onClick={() => setFavorite(true)} className="far fa-star"></i>}
         {isFavorite && <i onClick={() => setFavorite(false)} className="fas fa-star"></i>}
