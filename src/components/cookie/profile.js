@@ -36,17 +36,44 @@ const Profile = () => {
                                 currentUser.username !== username &&
                                 <h2>{username}</h2>
                             }
+                            <ul>
 
-                            {currentUser.username === username &&
-                                <div className="float-right">
-                                    <Link to={`/update-profile/${currentUser.username}`} className="btn edit-profile-button">Edit Profile</Link>
-                                </div>
-                            }
-                            {currentUser.role === "Chef" &&
-                            <div className="float-right">
-                                <Link to={"/create"} className="btn edit-profile-button">Create Recipe</Link>
-                            </div>
-                            }
+                                    {currentUser.username === username &&
+                                    <li>
+                                    <div className="float-right">
+
+                                        <Link to={`/update-profile/${currentUser.username}`} className="btn edit-profile-button">Edit Profile</Link>
+
+                                    </div>
+                                    </li>
+                                    }
+
+
+                                    {currentUser.role === "Chef" &&
+                                    <li>
+                                    <div className="float-right">
+                                        <br/>
+                                        <Link to={"/create"} className="btn edit-profile-button">Create Recipe</Link>
+                                    </div>
+                                    </li>
+
+                                    }
+
+                                    {
+                                        currentUser.role === "Admin" &&
+                                    <li>
+                                        <div className="float-right">
+                                            <br/>
+                                            <Link to={"/allrecipes"} className="btn edit-profile-button">Show All Recipes</Link>
+                                        </div>
+                                    </li>
+
+                                    }
+
+
+                            </ul>
+
+
                         </div>
 
                         {/*<div style={{display: 'flex', marginTop: 20, justifyContent: "space-between", width: "150%"}}>*/}
