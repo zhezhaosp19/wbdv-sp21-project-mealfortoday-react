@@ -10,7 +10,8 @@ const Header = () => {
             .then(profile => {
                 setCurrentUser(profile)
             })
-    },[])
+
+    },[currentUser])
 
 
   return (
@@ -109,22 +110,22 @@ const Header = () => {
               {/*</Form>*/}
             <Nav>
               {
-                !currentUser && (
+                currentUser.length === 0 && (
                     <Nav.Link href="/login">Login</Nav.Link>
                 )
               }
               {
-                !currentUser && (
+                currentUser.length === 0 && (
                     <Nav.Link href="/register">Register</Nav.Link>
                 )
               }
               {
-                currentUser && (
+                currentUser.length !== 0 && (
                     <Nav.Link href={`/profile/${currentUser.username}`}>Profile</Nav.Link>
                 )
               }
               {
-                currentUser && (<Nav.Link href={`/profile/${currentUser.username}`}>Logout</Nav.Link>)
+                currentUser.length !== 0 && (<Nav.Link href={`/profile/${currentUser.username}`}>Logout</Nav.Link>)
               }
 
             </Nav>
