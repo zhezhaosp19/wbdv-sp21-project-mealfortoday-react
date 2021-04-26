@@ -6,11 +6,12 @@ import SearchMeals from "./components/search/search_meal";
 import MealDetails from "./components/details/meal_details";
 import UpdateProfile from "./components/cookie/update-profile";
 import Footer from "./components/partials/footer";
-import CreateRecipe from "./components/create-recipe";
+import CreateRecipe from "./components/recipes/create-recipe";
 import Profile from "./components/cookie/profile";
 import "./App.css"
 import FavoritesForUser from "./components/favorites/favoritesForUser"
 import UsersForFavorite from "./components/favorites/usersForFavorite"
+import RecipeTable from "./components/recipes/recipe-table";
 
 function App() {
   return (
@@ -62,6 +63,10 @@ function App() {
                 <Route path={"/users/favorite/:recipeId"}
                        exact={true}
                        component={UsersForFavorite}>
+                </Route>
+                <Route path={"/recipes"}
+                       exact={true}>
+                  <RecipeTable/>
                 </Route>
               </div>
 

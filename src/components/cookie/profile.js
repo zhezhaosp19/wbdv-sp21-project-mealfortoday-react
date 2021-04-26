@@ -64,7 +64,7 @@ const Profile = () => {
                                     <li>
                                         <div className="float-right">
                                             <br/>
-                                            <Link to={"/allrecipes"} className="btn edit-profile-button">Show All Recipes</Link>
+                                            <Link to={"/recipes"} className="btn edit-profile-button">Show All Recipes</Link>
                                         </div>
                                     </li>
 
