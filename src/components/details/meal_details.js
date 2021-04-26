@@ -13,6 +13,8 @@ import displaySimilarDishes from "./displaySimilarDishes"
 import reviews from "./reviews"
 import userService from "../../services/users-service"
 import Profile from "../cookie/profile"
+import mealService from "../../services/meals-service"
+import favoritesService from "../../services/favorites-service"
 
 const MealDetails = () => {
   const history = useHistory()
@@ -22,6 +24,14 @@ const MealDetails = () => {
   const [isFavorite, setIsFavorite] = useState(false)
   const [similarDishesCount, setSimilarDishesCount] = useState(0)
   const [currentUser, setCurrentUser] = useState([])
+  const [postByUser, setPostByUser] = useState([])
+
+//  useEffect(() => {
+//    mealService.findCreatedUserForRecipe()
+//      .then(user => {
+//          setPostByUser(user)
+//      })
+//  },[])
 
   useEffect(() => {
     userService.profile()
@@ -80,14 +90,14 @@ const MealDetails = () => {
         <h2>Instructions</h2>
         {showInstructions(meal)}
 
-        <h2>Reviews</h2>
-        {reviews(meal)}
+        {/*<h2>Reviews</h2>*/}
+        {/*{reviews(meal)}*/}
 
         {/*<h2>Similar Dishes</h2>*/}
         {/*{displaySimilarDishes(similarDishesCount, results, setSimilarDishesCount, searchTitle, meal)}*/}
 
         <br/>
-        {/*{JSON.stringify(results)}*/}
+        {JSON.stringify(results)}
         <br/>
         <br/>
         <br/>
