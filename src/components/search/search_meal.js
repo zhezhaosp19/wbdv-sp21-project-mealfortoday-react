@@ -34,7 +34,7 @@ const SearchMeals = () => {
 
     }
 
-  }, [title, resultsDB])
+  }, [title])
 
   return (
       <>
@@ -81,7 +81,7 @@ const SearchMeals = () => {
                   }
                   {
                     !results.meals &&
-                    <h2>No recipe found from remote database...</h2>
+                    <h3>No recipe found from remote database...</h3>
                   }
                 </ul>
                 <br/>
@@ -97,21 +97,16 @@ const SearchMeals = () => {
                             )
                           }
                           {
-                            !resultsDB &&
-                            <h2 className="ml-3">No recipe found in local database...</h2>
+                            (!resultsDB || !resultsDB[0]) &&
+                            <h3 className="ml-3">No recipe found in local database...</h3>
 
                           }
                         </ul>
                       </>
-
                 }
-
-
-
               </div>
             </div>
           </div>
-
         </div>
         {/*<Footer/>*/}
       </>

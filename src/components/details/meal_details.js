@@ -41,8 +41,10 @@ const MealDetails = () => {
   },[])
 
   useEffect(() => {
-    findMealById()
+     findMealById()
+    findMealByIdFromLocal()
   }, [])
+
 
   useEffect(() => {
     mealsService.findMealByTitle(searchTitle)
@@ -54,6 +56,12 @@ const MealDetails = () => {
     mealsService.findMealById(idMeal)
     .then((meal) => setMeal(meal.meals[0]))
   }
+
+  const findMealByIdFromLocal = () => {
+    mealsService.findMealByIdFromLocal(idMeal)
+    .then((meal) => setMeal(meal[0]))
+  }
+
 
   const setFavorite = (set) => {
     if (set) {
