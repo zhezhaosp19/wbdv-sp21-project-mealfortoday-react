@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
-import Header from "./partials/header";
-import recipeService from "../services/recipes-service"
-import userService from "../services/users-service"
+import Header from "../partials/header";
+import recipeService from "../../services/recipes-service"
+import userService from "../../services/users-service"
 
 const CreateRecipe = () => {
     const [user, setUser] = useState([])
@@ -30,6 +30,8 @@ const CreateRecipe = () => {
         userService.profile()
             .then(currUser => {
                 setUser(currUser)
+                recipe.username = currUser.username
+                setRecipe(recipe)
                 console.log(JSON.stringify(currUser))
                 console.log(JSON.stringify(user))
             })
@@ -245,7 +247,8 @@ const CreateRecipe = () => {
                     <label className="col-sm-2 col-form-label">User ID</label>
                     <div className="col-sm-10">
                         <input onChange={(e) => {
-                            recipe.username = e.target.value
+                            console.log(user.username)
+                            recipe.username = user.username
                             setRecipe(recipe)
                         }}
                                readOnly
@@ -285,18 +288,16 @@ const CreateRecipe = () => {
             <div className="form-group row">
                 <label className="col-sm-2 col-form-label"/>
                 <div className="col-sm-12">
-                    <Link to="/create">
-                        <button className="btn btn-success form-control"
-                        onClick={() => {
-                            //console.log(JSON.stringify(recipe))
-                            recipeService.createRecipe(recipe.strMeal, recipe)
-                                .then(response => response.json)
-                            alert("Create successfully!")
-                        }}>
-                            Create
-                        </button>
-                    </Link>
-
+                    <button className="btn btn-success form-control"
+                    onClick={() => {
+                        recipeService.createRecipe(recipe.strMeal, recipe)
+                            .then(response => response.json)
+                        //console.log(this.state.user.username)
+                        //this.props.history.push(`/profile/${this.state.user.username}`)
+                        alert("Create successfully!")
+                    }}>
+                        Create
+                    </button>
                 </div>
             </div>
 
