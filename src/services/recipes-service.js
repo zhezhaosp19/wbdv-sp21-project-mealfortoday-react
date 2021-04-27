@@ -17,7 +17,15 @@ export const findAllRecipes = () =>
     fetch(RECIPES_URL)
         .then(response => response.json())
 
+export const deleteRecipe = (name) =>
+    fetch(`${RECIPES_URL}/${name}`, {
+        method: "DELETE"
+    })
+        .then(response => response.json())
+
+
 export default {
     createRecipe,
-    findAllRecipes
+    findAllRecipes,
+    deleteRecipe
 }
