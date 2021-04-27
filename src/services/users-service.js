@@ -23,6 +23,7 @@ const logout = () =>
         method: 'POST',
         credentials: "include"
     }).then(response => response.json())
+    .then(res => console.log(res))
 
 const login = (user) =>
     fetch(`${USER_URL}/login`, {

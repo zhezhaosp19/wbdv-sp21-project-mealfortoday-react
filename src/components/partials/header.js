@@ -125,7 +125,7 @@ const Header = () => {
                 )
               }
               {
-                currentUser.length !== 0 && (<Nav.Link href={`/profile/${currentUser.username}`}>Logout</Nav.Link>)
+                currentUser.length !== 0 && (<Nav.Link href={`/update-profile/${currentUser.username}`}>Logout</Nav.Link>)
               }
 
             </Nav>
