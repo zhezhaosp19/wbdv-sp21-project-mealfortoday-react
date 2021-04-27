@@ -44,10 +44,16 @@ const updateProfile = (profile) =>
         }
     }).then(response => response.json())
 
+const findAllUsers = () => {
+  return fetch(USER_URL)
+  .then(response => response.json())
+}
+
 export default {
     register,
     profile,
     logout,
     login,
-    updateProfile
+    updateProfile,
+  findAllUsers
 }
