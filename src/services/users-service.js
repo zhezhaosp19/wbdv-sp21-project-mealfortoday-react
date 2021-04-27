@@ -21,10 +21,9 @@ const profile = () =>
 
 const logout = () =>
     fetch(`${USER_URL}/logout`, {
-        method: 'POST',
+        method: 'GET',
         credentials: "include"
-    }).then(response => response.json())
-    .then(res => console.log(res))
+    })
 
 const login = (user) =>
     fetch(`${USER_URL}/login`, {
