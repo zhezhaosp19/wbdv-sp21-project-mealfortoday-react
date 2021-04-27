@@ -13,7 +13,6 @@ import displaySimilarDishes from "./displaySimilarDishes"
 import reviews from "./reviews"
 import userService from "../../services/users-service"
 import Profile from "../cookie/profile"
-import mealService from "../../services/meals-service"
 import favoritesService from "../../services/favorites-service"
 
 const MealDetails = () => {
@@ -27,7 +26,7 @@ const MealDetails = () => {
   const [postByUser, setPostByUser] = useState([])
 
 //  useEffect(() => {
-//    mealService.findCreatedUserForRecipe()
+//    mealsService.findCreatedUserForRecipe()
 //      .then(user => {
 //          setPostByUser(user)
 //      })
@@ -85,7 +84,7 @@ const MealDetails = () => {
           <Link to={`/profile/${currentUser.username}`}> {currentUser.username}</Link>
           <br/>
           Posted by
-          <Link to={`/profile/${currentUser.username}`}> </Link>
+          <Link to={`/profile/${currentUser.username}`}> User</Link>
           <br/>
           Liked by
           <Link to={`/users/favorite/${idMeal}`}> Users</Link>
