@@ -1,6 +1,7 @@
 const FAVORITE_URL = "http://localhost:4000/api/favorites"
+const USERS_URL = "http://localhost:4000/api/users"
 
-const addFavoriteToMeal = (username, mealId) => 
+const addFavoriteToMeal = (username, mealId) =>
     fetch(`${FAVORITE_URL}/${mealId}`, {
         method: 'POST',
         body: JSON.stringify(username),
@@ -9,7 +10,7 @@ const addFavoriteToMeal = (username, mealId) =>
         }
     }).then(response => response.json())
 
-const addFavoriteToUser = (username, mealId) => 
+const addFavoriteToUser = (username, mealId) =>
     fetch(`${FAVORITE_URL}/${username}`, {
         method: 'POST',
         body: JSON.stringify(mealId),
@@ -19,8 +20,14 @@ const addFavoriteToUser = (username, mealId) =>
     }).then(response => response.json())
 
 
+const findUsersForFavorite = (mealId) => {
+    fetch(`${USERS_URL}/favorites/${mealId}`)
+        .then(response => response.json())
+}
+
 
 export default {
     addFavoriteToMeal,
-    addFavoriteToUser
+    addFavoriteToUser,
+    findUsersForFavorite
 }

@@ -53,8 +53,7 @@ class UpdateProfile extends React.Component{
 
     logoutHandle = () => {
         userService.logout()
-            .then(() => this.props.history.push('/'))
-
+        this.props.history.push('/')
     }
 
     fileSelecterHandler = (e) => {

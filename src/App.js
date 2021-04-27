@@ -55,12 +55,12 @@ function App() {
                        component={Profile}>
                 </Route>
                 {/*Display all favorites for a specific user*/}
-                <Route path={"/favorites/:username"}
+                <Route path={"/favorites/user/:username"}
                        exact={true}
                        component={FavoritesForUser}>
                 </Route>
                 {/*Display all users that liked a specific recipe*/}
-                <Route path={"/users/favorite/:recipeId"}
+                <Route path={"/users/favorite/:mealId"}
                        exact={true}
                        component={UsersForFavorite}>
                 </Route>

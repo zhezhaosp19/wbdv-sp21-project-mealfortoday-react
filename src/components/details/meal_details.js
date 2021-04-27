@@ -13,7 +13,6 @@ import displaySimilarDishes from "./displaySimilarDishes"
 import reviews from "./reviews"
 import userService from "../../services/users-service"
 import Profile from "../cookie/profile"
-import mealService from "../../services/meals-service"
 import favoritesService from "../../services/favorites-service"
 import UsersList from "./listAllUsers";
 
@@ -28,7 +27,7 @@ const MealDetails = () => {
   const [postByUser, setPostByUser] = useState([])
 
 //  useEffect(() => {
-//    mealService.findCreatedUserForRecipe()
+//    mealsService.findCreatedUserForRecipe()
 //      .then(user => {
 //          setPostByUser(user)
 //      })
@@ -104,6 +103,7 @@ const MealDetails = () => {
           currentUser: {currentUser.username}
           {console.log(currentUser)}
           <br/>
+
           {!currentUser.username &&
           <Link to={`/login`}>
             <i className="far fa-star"></i>
@@ -113,6 +113,10 @@ const MealDetails = () => {
               onClick={() => setFavorite(true)} className="far fa-star"></i>}
           {currentUser.username && isFavorite && <i
               onClick={() => setFavorite(false)} className="fas fa-star"></i>}
+
+          <br/>
+          {/*Liked by*/}
+          {/*<Link to={`/users/favorite/${idMeal}`}> Users</Link>*/}
 
 
           {/*{currentUser.username && !isFavorite && <i onClick={() => setIsFavorite(true)} className="far fa-star"></i>}*/}
