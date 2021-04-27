@@ -34,6 +34,18 @@ const MealDetails = () => {
 //  },[])
 
   useEffect(() => {
+    const data = localStorage.getItem('isLiked');
+    if (data) {
+      setIsFavorite(JSON.parse(data));
+    }
+  }, [])
+
+
+  useEffect(() => {
+    localStorage.setItem('isLiked', JSON.stringify(isFavorite))
+  })
+
+  useEffect(() => {
     userService.profile()
       .then(currUser => {
         setCurrentUser(currUser)
@@ -87,8 +99,20 @@ const MealDetails = () => {
           Posted by
           <Link to={`/profile/${currentUser.username}`}> </Link>
         </div>
-        {!isFavorite && <i onClick={() => setFavorite(true)} className="far fa-star"></i>}
-        {isFavorite && <i onClick={() => setFavorite(false)} className="fas fa-star"></i>}
+        currentUser: {currentUser.username}
+        {console.log(currentUser)}
+        <br/>
+        {!currentUser.username &&
+        <Link to={`/login`}>
+          <i className="far fa-star"></i>
+        </Link>
+        }
+        {currentUser.username && !isFavorite && <i onClick={() => setFavorite(true)} className="far fa-star"></i>}
+        {currentUser.username && isFavorite && <i onClick={() => setFavorite(false)} className="fas fa-star"></i>}
+
+
+        {/*{currentUser.username && !isFavorite && <i onClick={() => setIsFavorite(true)} className="far fa-star"></i>}*/}
+        {/*{currentUser.username && isFavorite && <i onClick={() => setIsFavorite(false)} className="fas fa-star"></i>}*/}
 
         <img className="mealThumb" src={meal.strMealThumb} width={500}/>
 
