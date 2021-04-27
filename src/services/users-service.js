@@ -55,11 +55,17 @@ const findAllUsers = () => {
   // }
 }
 
+const findUserByName = (username) => 
+    fetch(`${USER_URL}/${username}`)
+    .then(response => response.json())
+
+
   export default {
     register,
     profile,
     logout,
     login,
     updateProfile,
-    findAllUsers
+    findAllUsers,
+    findUserByName
   }

@@ -13,7 +13,7 @@ class UpdateProfile extends React.Component{
         area: '',
         bio: '',
         flavor: '',
-        portrait: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+        portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
         // portrait: null
     }
 

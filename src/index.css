@@ -73,3 +73,11 @@ code {
 .each-cell {
   text-align: center;
 }
+
+.fa-venus {
+  color: plum;
+}
+
+.fa-mars {
+  color: lightblue;
+}
