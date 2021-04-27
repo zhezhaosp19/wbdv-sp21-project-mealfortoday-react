@@ -8,12 +8,21 @@ const UsersForFavorites = () => {
 
   useEffect(() => {
     favoritesService.findUsersForFavorite(mealId)
-  }, [])
+  }, [mealId])
 
   return (
     <>
       <h1>Users For Favorite page</h1>
       {mealId}
+      <ul>
+        {
+          users.map(user =>
+            <li>
+              {user.username}
+            </li>
+          )
+        }
+      </ul>
     </>
   )
 }

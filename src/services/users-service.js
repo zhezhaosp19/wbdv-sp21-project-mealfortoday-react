@@ -1,4 +1,5 @@
 const USER_URL = "http://localhost:4000/api/users"
+const FAVORITE_URL = "http://localhost:4000/api/favorites"
 
 const register = (user) =>
     // console.log(user)
@@ -44,10 +45,16 @@ const updateProfile = (profile) =>
         }
     }).then(response => response.json())
 
+const findFavoritesForUser = (username) => {
+    fetch(`${FAVORITE_URL}/user/${username}`)
+        .then(response => response.json())
+}
+
 export default {
     register,
     profile,
     logout,
     login,
-    updateProfile
+    updateProfile,
+    findFavoritesForUser
 }
