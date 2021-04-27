@@ -64,7 +64,7 @@ function App() {
                        exact={true}
                        component={UsersForFavorite}>
                 </Route>
-                <Route path={"/recipes"}
+                <Route path={"/:username/recipes"}
                        exact={true}>
                   <RecipeTable/>
                 </Route>
