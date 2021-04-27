@@ -103,7 +103,9 @@ const Profile = () => {
                                         Your posts
                                     </div>
                                     <div className="col-6 each-cell">
-                                        Your Favorites
+                                        <Link to={`/favorites/user/${currentUser.username}`}>
+                                            Your Favorites
+                                        </Link>
                                     </div>
                                 </>
                             }
