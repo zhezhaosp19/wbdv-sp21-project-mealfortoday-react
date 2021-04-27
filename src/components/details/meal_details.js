@@ -139,7 +139,6 @@ const MealDetails = () => {
           {/*{displaySimilarDishes(similarDishesCount, results, setSimilarDishesCount, searchTitle, meal)}*/}
 
           <br/>
-          {JSON.stringify(results)}
 
           <h2>Checkout who is also using our service!</h2>
           <UsersList/>

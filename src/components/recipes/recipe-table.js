@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom"
 import RecipeRow from "./recipe-row";
 import recipeService from '../../services/recipes-service'
+import Header from "../partials/header";
 
 const RecipeTable = () => {
     // constructor(props) {
@@ -35,29 +36,33 @@ const RecipeTable = () => {
 
 
         return(
-            <div className="container">
-                <h2>All Recipes Table</h2>
-                <table className="table table-striped">
-                    <tbody>
-                    <tr>
-                        <th>Recipe Name</th>
-                        <th className="d-none d-md-table-cell">Created by</th>
-                        <th className="float-right">
-                            <i className="fas fa-1x fa-trash"/>
-                        </th>
-                    </tr>
-                    {
-                        recipes.map((recipe) =>
-                            //console.log(JSON.stringify(recipe))
+            <>
+                <Header/>
+                <div className="container mt-5">
+                    <h2>All Recipes Table</h2>
+                    <table className="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Recipe Name</th>
+                            <th className="d-none d-md-table-cell">Created by</th>
+                            <th className="float-right">
+                                <i className="fas fa-1x fa-trash"/>
+                            </th>
+                        </tr>
+                        {
+                            recipes.map((recipe) =>
+                                //console.log(JSON.stringify(recipe))
                                 <RecipeRow
                                     recipe={recipe}/>
-                                    )
+                            )
 
-                    }
-                    </tbody>
-                </table>
+                        }
+                        </tbody>
+                    </table>
 
-            </div>
+                </div>
+            </>
+
         )
 
 }
