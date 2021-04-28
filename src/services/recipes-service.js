@@ -1,6 +1,6 @@
 
-// const RECIPES_URL = "https://mealfortoday.herokuapp.com/api/recipes"
-const RECIPES_URL = "http://localhost:4000/api/recipes"
+const RECIPES_URL = "https://mealfortoday.herokuapp.com/api/recipes"
+// const RECIPES_URL = "http://localhost:4000/api/recipes"
 // const RECIPES_URL = "http://localhost:4000/api/recipes"
 
 // const RECIPES_URL = "https://mealfortoday.herokuapp.com/api/recipes"
