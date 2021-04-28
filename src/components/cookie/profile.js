@@ -4,37 +4,56 @@ import {Link, useParams} from "react-router-dom";
 import userService from "../../services/users-service";
 import CurrUserContent from "./publicContent"
 import PrivateContent from './privateContent';
+import favoritesService from '../../services/favorites-service';
+import mealsService from '../../services/meals-service';
+import FavoritesForUser from '../favorites/favoritesForUser';
 
 const Profile = () => {
     const {username} = useParams()
     // console.log(username)
     const [currentUser, setCurrentUser] = useState([])
     const [otherUser, setOtherUser] = useState([])
-    const [portrait, setPortrait] = useState("https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg")
+    const [favorates, setFavorates] = useState([])
+    // const[detail, setDetail] = useState()
+    // const [portrait, setPortrait] = useState("https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg")
     useEffect(() => {
         userService.profile()
             .then(currUser => {
-                console.log(currUser)
+                // console.log(currUser)
                 setCurrentUser(currUser)
-                setPortrait(currUser.portrait)
             })
     },[])
     useEffect(() => {
-        // if(username !== currentUser.username) {
         userService.findUserByName(username)
             .then(otherUser => {
-                console.log(otherUser[0])
                 setOtherUser(otherUser[0])
             })
-        // }
     },[])
+    useEffect(() => {
+        // console.log(username)
+        favoritesService.findAllFavoritesForAUser(username)
+            .then(favoratesItem => {
+                setFavorates(favoratesItem)
+            }
+            )
+    }, [])
+
+    // const setDetailHandler = (favorate) => {
+    //     // console.log(favorate.recipeId)
+    //     mealsService.findMealById(favorate.recipeId)
+    //     .then(detail => {
+    //         console.log(detail[0])
+    //         setDetail(detail)
+    //     })
+    // }
+
     return (
         <>
             <Header/>
             <div className="container profile">
                 {
                     currentUser.username === username &&
-                    <CurrUserContent currentUser = {currentUser} portrait = {portrait}/>
+                    <CurrUserContent currentUser = {otherUser} />
 
                 }
                 {
@@ -58,39 +77,45 @@ const Profile = () => {
        
                 }
 
-                <div>
-                    <div className="cell-box">
-                        <div className="form-group row cell">
-                            {
-                                currentUser.role === "Chef" &&
-                                <>
+                <div className="cell-box">
+                    <div className="form-group row cell">
+                        {
+                            otherUser.role === "Chef" &&
+                            <>
 
 
-                                    <div className="col-6 each-cell">
-                                        Your posts
-                                    </div>
-                                    <div className="col-6 each-cell">
-                                        <Link to={`/favorites/user/${currentUser.username}`}>
-                                            Your Favorites
-                                        </Link>
-                                    </div>
-                                </>
-                            }
-                            {
-                                currentUser.role !== "Chef" &&
-                                <>
-                                    <div className="col-12 each-cell">
+                                <div className="col-6 each-cell">
+                                    Your posts
+                                </div>
+                                <div className="col-6 each-cell">
+                                    <Link to={`/favorites/user/${currentUser.username}`}>
                                         Your Favorites
-                                    </div>
-                                </>
-                            }
+                                    </Link>
+                                </div>
+                            </>
+                        }
+                        {
+                            otherUser.role !== "Chef" &&
+                            <>
+                                <div className="col-12 each-cell">
+                                    Your Favorites
+                                </div>
+                            </>
+                        }
 
 
-                        </div>
+                    </div>
+                    <div className="row">
+                        {/* {console.log(favorates)} */}
+                        {
+                            favorates &&       
+                            favorates.map(favorate =>     
+                                <FavoritesForUser favorite={favorate}/>
+                            )   
+
+                        }
                     </div>
                 </div>
-
-
             </div>
         </>
 

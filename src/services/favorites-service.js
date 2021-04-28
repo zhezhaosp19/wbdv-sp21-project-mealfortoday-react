@@ -33,6 +33,7 @@ const findAllUsersForAMeal = (mealId) => {
 const findAllFavoritesForAUser = (username) => {
     return fetch(`${FAVORITE_URL}/${username}`)
         .then(response => response.json())
+        // .then(res=>console.log(res))
 
 }
 

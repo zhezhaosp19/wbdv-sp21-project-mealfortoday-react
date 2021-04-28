@@ -18,30 +18,15 @@ class UpdateProfile extends React.Component{
             bio: '',
             flavor: '',
             portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
-            // portrait: null
         }
     }
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         username: '',
-    //         role: '',
-    //         email: '',
-    //         gender: '',
-    //         area: '',
-    //         bio: '',
-    //         flavor: '',
-    //         portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
-    //         // portrait: null
-    //     }
-
-    // }
     
 
-    updateProps() {
-        userService.profile()
+    updateProps = (username) => {
+        // userService.profile()
+        userService.findUserByName(username)
             .then((profile) => {
-                console.log(profile)
+                profile = profile[0]
                 this.setState({
                     username: profile.username,
                     role: profile.role,
@@ -56,9 +41,8 @@ class UpdateProfile extends React.Component{
     }
 
     componentDidMount() {
-        const username = this.props.params;
-        console.log(username);
-        this.updateProps()
+        const username = this.props.match.params.username;
+        this.updateProps(username)
     }
 
     onChangeHandler = (e) => {

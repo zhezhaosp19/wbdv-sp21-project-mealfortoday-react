@@ -17,7 +17,7 @@ const UsersList = ({mealId}) => {
     .then((users) => {
       setUsers(users)
     })
-  }, [users])
+  }, [])
 
 
 
