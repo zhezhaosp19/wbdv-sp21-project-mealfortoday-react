@@ -7,8 +7,8 @@ const findMealById = (idMeal) =>
     .then(response => response.json())
 
 const findMealByIdFromLocal = (idMeal) =>
-    // fetch(`http://localhost:4000/api/recipes/id/${idMeal}`)
-  fetch(`https://mealfortoday.herokuapp.com/api/recipes/id/${idMeal}`)
+    fetch(`http://localhost:4000/api/recipes/id/${idMeal}`)
+  // fetch(`https://mealfortoday.herokuapp.com/api/recipes/id/${idMeal}`)
     .then(response => response.json())
 
 const findMealByCategory = (category) =>
@@ -35,8 +35,8 @@ const findLastedRecipes = () => {
 }
 
 const findRecipesFromMongoDB = (title) => {
-  // return fetch(`http://localhost:4000/api/recipes/${title}`)
-  return fetch(`https://mealfortoday.herokuapp.com/api/recipes/${title}`)
+  return fetch(`http://localhost:4000/api/recipes/${title}`)
+  // return fetch(`https://mealfortoday.herokuapp.com/api/recipes/${title}`)
   .then(response => response.json())
 
 }
