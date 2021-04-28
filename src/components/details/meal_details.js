@@ -75,9 +75,9 @@ const MealDetails = () => {
   const setFavorite = (set) => {
     if (set) {
       setIsFavorite(true)
-      favoritesService.addFavoriteToMeal(currentUser.username, idMeal)
+      favoritesService.addFavorite({username: currentUser.username, recipeId: idMeal})
       .then()
-      favoritesService.addFavoriteToUser(currentUser.username, idMeal).then()
+      // favoritesService.addFavoriteToUser(currentUser.username, idMeal).then()
     } else {
       setIsFavorite(false)
     }
@@ -101,7 +101,7 @@ const MealDetails = () => {
             <Link to={`/profile/${currentUser.username}`}> </Link>
           </div>
           currentUser: {currentUser.username}
-          {console.log(currentUser)}
+          {/*{console.log(currentUser)}*/}
           <br/>
 
           {!currentUser.username &&
@@ -109,10 +109,10 @@ const MealDetails = () => {
             <i className="far fa-star"></i>
           </Link>
           }
-          {/* {currentUser.username && !isFavorite && <i
-              onClick={() => setFavorite(true)} className="far fa-star"></i>}
+          {currentUser.username && !isFavorite && <i
+              onClick={() => setFavorite(true)} className="far fa-star"/>}
           {currentUser.username && isFavorite && <i
-              onClick={() => setFavorite(false)} className="fas fa-star"></i>} */}
+              onClick={() => setFavorite(false)} className="fas fa-star"/>}
 
           <br/>
           {/*Liked by*/}
