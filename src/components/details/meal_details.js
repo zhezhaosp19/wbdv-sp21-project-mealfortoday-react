@@ -140,8 +140,9 @@ const MealDetails = () => {
 
           <br/>
 
-          <h2>Checkout who is also using our service!</h2>
-          <UsersList/>
+
+          <UsersList mealId={idMeal}/>
+
           <br/>
           <br/>
           <br/>

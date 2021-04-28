@@ -1,8 +1,10 @@
 const FAVORITE_URL = "http://localhost:4000/api/favorites"
 const USERS_URL = "http://localhost:4000/api/users"
 
+
 // const FAVORITE_URL = "https://mealfortoday.herokuapp.com/api/favorites"
 // const USERS_URL = "https://mealfortoday.herokuapp.com/api/users"
+
 
 const addFavorite = (info) =>
     fetch(FAVORITE_URL, {
@@ -23,14 +25,15 @@ const addFavorite = (info) =>
 //     }).then(response => response.json())
 
 
-const findAllUsersForAFavorite = (mealId) => {
-    fetch(`${FAVORITE_URL}/${mealId}`)
+const findAllUsersForAMeal = (mealId) => {
+    return fetch(`${FAVORITE_URL}/id/${mealId}`)
         .then(response => response.json())
 }
 
 const findAllFavoritesForAUser = (username) => {
-    fetch(`${FAVORITE_URL}/${username}`)
+    return fetch(`${FAVORITE_URL}/${username}`)
         .then(response => response.json())
+
 }
 
 const findAllFavorites = () => {
@@ -46,7 +49,7 @@ const findFavoriteForUserAndMealID = (username, mealId) => {
 export default {
     addFavorite,
     // addFavoriteToUser,
-    findAllUsersForAFavorite,
+  findAllUsersForAMeal,
     findAllFavoritesForAUser,
     findAllFavorites,
     findFavoriteForUserAndMealID

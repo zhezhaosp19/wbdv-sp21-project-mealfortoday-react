@@ -1,8 +1,8 @@
-const USER_URL = "http://localhost:4000/api/users"
-const FAVORITE_URL = "http://localhost:4000/api/favorites"
 
 // const USER_URL = "https://mealfortoday.herokuapp.com/api/users"
 // const FAVORITE_URL = "https://mealfortoday.herokuapp.com/api/favorites"
+const USER_URL = "http://localhost:4000/api/users"
+const FAVORITE_URL = "http://localhost:4000/api/favorites"
 
 const register = (user) =>
     // console.log(user)
@@ -50,12 +50,6 @@ const updateProfile = (profile) =>
 const findAllUsers = () => {
   return fetch(USER_URL)
   .then(response => response.json())
-
-  // const findFavoritesForUser = (username) => {
-  //   fetch(`${FAVORITE_URL}/user/${username}`)
-  //   .then(response => response.json())
-  //
-  // }
 }
 
 const findUserByName = (username) => 

@@ -12,6 +12,7 @@ import "./App.css"
 import FavoritesForUser from "./components/favorites/favoritesForUser"
 import UsersForFavorite from "./components/favorites/usersForFavorite"
 import RecipeTable from "./components/recipes/recipe-table";
+import PrivacyPolicy from "./components/privacyPolicy";
 
 function App() {
   return (
@@ -67,6 +68,9 @@ function App() {
                 <Route path={"/:username/recipes"}
                        exact={true}>
                   <RecipeTable/>
+                </Route>
+                <Route path="/policy" exact={true}>
+                  <PrivacyPolicy/>
                 </Route>
               </div>
 

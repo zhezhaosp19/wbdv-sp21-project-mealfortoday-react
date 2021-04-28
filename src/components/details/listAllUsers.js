@@ -1,22 +1,33 @@
 import React, {useState, useEffect} from "react";
 import {Link, useParams} from "react-router-dom";
-import userService from "../../services/users-service"
+import favoritesService from "../../services/favorites-service"
 
-const UsersList = () => {
+const UsersList = ({mealId}) => {
 
   const [users, setUsers] = useState([])
+  // useEffect(() => {
+  //   userService.findAllUsers()
+  //   .then((users) => {
+  //     setUsers(users)
+  //   })
+  // }, [])
+
   useEffect(() => {
-    userService.findAllUsers()
+    favoritesService.findAllUsersForAMeal(mealId)
     .then((users) => {
       setUsers(users)
     })
-  }, [])
+  }, [users])
+
+
 
   return(
       <div >
-        <div className="list-group">
+        <div className="list-group ">
+          <h2>Checkout who also liked this recipe!</h2>
+          {/*from {mealId}{JSON.stringify(users)}*/}
           {
-            users.map((user) => {
+            users && users.map((user) => {
               return(
                   <>
                       <Link
@@ -27,6 +38,9 @@ const UsersList = () => {
                   </>
               )
             })
+          }
+          {
+            !users[0] && <h4>Do you want to be the first one?</h4>
           }
         </div>
       </div>
