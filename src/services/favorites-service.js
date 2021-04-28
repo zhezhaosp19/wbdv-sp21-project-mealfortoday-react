@@ -1,5 +1,6 @@
 // const FAVORITE_URL = "http://localhost:4000/api/favorites"
 // const USERS_URL = "http://localhost:4000/api/users"
+
 const FAVORITE_URL = "https://mealfortoday.herokuapp.com/api/favorites"
 const USERS_URL = "https://mealfortoday.herokuapp.com/api/users"
 

@@ -11,7 +11,8 @@ class Register extends React.Component {
         validatePassword: '',
         email: '',
         role: '',
-        birthday: ''
+        birthday: '',
+        portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
     }
 
     onChangeHandler = (e) => {
@@ -59,9 +60,26 @@ class Register extends React.Component {
         return(
             <>
                 <Header/>
+
                 <div className="container">
                     <h1>Register</h1>
                     <br/>
+
+                    <div className="img-profile">
+                        <img className="image"
+                             src={this.state.portrait}/>
+                    </div>
+                    <br/>
+
+                    <div className="form-group row">
+                        <label htmlFor="portrait" className="col-sm-2 col-form-label">Profile Photo</label>
+                        <div className="col-sm-10">
+                            <input value={this.state.portrait}
+                            onChange={e => this.onChangeHandler(e)}
+                                type="text" name="portrait" id="portrait" className="form-control"
+                                />
+                        </div>
+                    </div>
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
                         <div className="col-sm-10">

@@ -109,10 +109,10 @@ const MealDetails = () => {
             <i className="far fa-star"></i>
           </Link>
           }
-          {currentUser.username && !isFavorite && <i
+          {/* {currentUser.username && !isFavorite && <i
               onClick={() => setFavorite(true)} className="far fa-star"></i>}
           {currentUser.username && isFavorite && <i
-              onClick={() => setFavorite(false)} className="fas fa-star"></i>}
+              onClick={() => setFavorite(false)} className="fas fa-star"></i>} */}
 
           <br/>
           {/*Liked by*/}
