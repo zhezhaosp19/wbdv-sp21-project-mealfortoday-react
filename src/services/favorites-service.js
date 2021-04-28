@@ -43,9 +43,33 @@ const findAllFavorites = () => {
 }
 
 const findFavoriteForUserAndMealID = (username, mealId) => {
-    fetch(`${FAVORITE_URL}/${mealId}/${username}`)
+   return fetch(`${FAVORITE_URL}/${mealId}/${username}`)
         .then(response => response.json())
+
 }
+//
+// export const deleteCourse = (courseId) =>
+//     fetch(`${COURSES_URL}/${courseId}`, {
+//       method: 'DELETE'
+//     })
+//     .then(response => response.json())
+
+const deleteFavorite = (username, mealId) => {
+  fetch(`${FAVORITE_URL}/${mealId}/${username}`, {
+    method:'DELETE'
+  })
+  .then(response => response.json())
+}
+
+
+// const addFavoriteToUser = (username, mealId) =>
+//     fetch(`${FAVORITE_URL}/${username}`, {
+//         method: 'POST',
+//         body: JSON.stringify(mealId),
+//         headers: {
+//             'content-type': 'application/json'
+//         }
+//     }).then(response => response.json())
 
 export default {
     addFavorite,
@@ -53,5 +77,6 @@ export default {
   findAllUsersForAMeal,
     findAllFavoritesForAUser,
     findAllFavorites,
-    findFavoriteForUserAndMealID
+    findFavoriteForUserAndMealID,
+  deleteFavorite
 }

@@ -47,7 +47,6 @@ const Profile = () => {
                     {
                         currentUser.username === username &&
                         <CurrUserContent currentUser = {otherUser} />
-
                     }
                     {
                         currentUser.username !== username &&
@@ -75,8 +74,6 @@ const Profile = () => {
                             {
                                 otherUser.role === "Chef" &&
                                 <>
-
-
                                     <div className="col-6 each-cell">
                                         <Link className={`bth ${!isFavo? 'select': 'not-select'}`} onClick={() => setIsFavo(false)}>
                                             Your posts
@@ -99,8 +96,6 @@ const Profile = () => {
                                     </div>
                                 </>
                             }
-
-
                         </div>
                     </div>
                     <div className="lower">

@@ -179,22 +179,22 @@ class UpdateProfile extends React.Component{
                         </div>
                     </div>
 
-                    {
-                        this.state.role === "Chef" &&
-                        <div className="form-group row">
-                            <label className="col-sm-2 col-form-label"/>
-                            <div className="col-sm-12">
-                                <Link to="/create">
-                                    <button className="btn btn-success form-control"
-                                            onClick={this.updateHandle}>
-                                        Create Recipe
-                                    </button>
-                                </Link>
+                    {/*{*/}
+                    {/*    this.state.role === "Chef" &&*/}
+                    {/*    <div className="form-group row">*/}
+                    {/*        <label className="col-sm-2 col-form-label"/>*/}
+                    {/*        <div className="col-sm-12">*/}
+                    {/*            <Link to="/create">*/}
+                    {/*                <button className="btn btn-success form-control"*/}
+                    {/*                        onClick={this.updateHandle}>*/}
+                    {/*                    Create Recipe*/}
+                    {/*                </button>*/}
+                    {/*            </Link>*/}
 
-                            </div>
-                        </div>
+                    {/*        </div>*/}
+                    {/*    </div>*/}
 
-                    }
+                    {/*}*/}
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label"/>
                         <div className="col-sm-12">

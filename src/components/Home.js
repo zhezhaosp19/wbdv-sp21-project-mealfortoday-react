@@ -78,7 +78,7 @@ const Home = () => {
                 </h2>
               }
               {
-                !currentUser && <h2>
+                !currentUser&& <h2>
                   <span>/</span> Welcome! Want to try something new?
                 </h2>
               }

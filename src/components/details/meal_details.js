@@ -25,6 +25,7 @@ const MealDetails = () => {
   const [similarDishesCount, setSimilarDishesCount] = useState(0)
   const [currentUser, setCurrentUser] = useState([])
   const [postByUser, setPostByUser] = useState([])
+  const [liked, setIsLiked] = useState(false)
 
 //  useEffect(() => {
 //    mealsService.findCreatedUserForRecipe()
@@ -33,27 +34,29 @@ const MealDetails = () => {
 //      })
 //  },[])
 
-  useEffect(() => {
-    const data = localStorage.getItem('isLiked');
-    if (data) {
-      setIsFavorite(JSON.parse(data));
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('isLiked', JSON.stringify(isFavorite))
-  })
+  // useEffect(() => {
+  //   const data = localStorage.getItem('isLiked');
+  //   if (data) {
+  //     setIsFavorite(JSON.parse(data));
+  //   }
+  // }, [])
+  //
+  // useEffect(() => {
+  //   localStorage.setItem('isLiked', JSON.stringify(isFavorite))
+  // })
 
   useEffect(() => {
     userService.profile()
     .then(currUser => {
       setCurrentUser(currUser)
     })
+
   }, [])
 
   useEffect(() => {
     findMealById()
     findMealByIdFromLocal()
+    // likedOrNot()
   }, [])
 
   useEffect(() => {
@@ -61,6 +64,7 @@ const MealDetails = () => {
     .then(results => setResults(results))
     // .then(results => console.log(results.meals))
   }, [searchTitle])
+
 
   const findMealById = () => {
     mealsService.findMealById(idMeal)
@@ -72,20 +76,39 @@ const MealDetails = () => {
     .then((meal) => setMeal(meal[0]))
   }
 
+  const likedOrNot = (username, mealId) => {
+    favoritesService.findFavoriteForUserAndMealID(username, mealId)
+    .then(res => {initial(res)})
+  }
+
+  const initial = (like) => {
+    if (like) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }
+
+
   const setFavorite = (set) => {
     if (set) {
       setIsFavorite(true)
       favoritesService.addFavorite({username: currentUser.username, recipeId: idMeal})
       .then()
       // favoritesService.addFavoriteToUser(currentUser.username, idMeal).then()
+
     } else {
-      setIsFavorite(false)
+      // setIsFavorite(false)
+      // favoritesService.deleteFavorite({username: currentUser.username, recipeId: idMeal})
+
     }
   }
 
   return (
       <>
         <Header/>
+        {/*{currentUser.username}*/}
+        {likedOrNot(currentUser.username, idMeal)}
         <div className="container mt-5">
           <button className="btn btn-primary" onClick={() => {
             history.goBack()
@@ -102,6 +125,7 @@ const MealDetails = () => {
           </div>
           currentUser: {currentUser.username}
           {/*{console.log(currentUser)}*/}
+
           <br/>
 
           {!currentUser.username &&
@@ -139,10 +163,7 @@ const MealDetails = () => {
           {/*{displaySimilarDishes(similarDishesCount, results, setSimilarDishesCount, searchTitle, meal)}*/}
 
           <br/>
-
-
           <UsersList mealId={idMeal}/>
-
           <br/>
           <br/>
           <br/>
