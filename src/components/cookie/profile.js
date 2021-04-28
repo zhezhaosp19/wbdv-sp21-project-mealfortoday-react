@@ -14,6 +14,7 @@ const Profile = () => {
     const [currentUser, setCurrentUser] = useState([])
     const [otherUser, setOtherUser] = useState([])
     const [favorates, setFavorates] = useState([])
+    const [isFavo, setIsFavo] = useState(true)
     // const[detail, setDetail] = useState()
     // const [portrait, setPortrait] = useState("https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg")
     useEffect(() => {
@@ -38,83 +39,83 @@ const Profile = () => {
             )
     }, [])
 
-    // const setDetailHandler = (favorate) => {
-    //     // console.log(favorate.recipeId)
-    //     mealsService.findMealById(favorate.recipeId)
-    //     .then(detail => {
-    //         console.log(detail[0])
-    //         setDetail(detail)
-    //     })
-    // }
-
     return (
         <>
             <Header/>
             <div className="container profile">
-                {
-                    currentUser.username === username &&
-                    <CurrUserContent currentUser = {otherUser} />
+                <div className="top">
+                    {
+                        currentUser.username === username &&
+                        <CurrUserContent currentUser = {otherUser} />
 
-                }
-                {
-                    currentUser.username !== username &&
-                    // <PrivateContent otherUser = {otherUser[0]}/>
-                    <div style={{display: 'flex', justifyContent: "space-around", margin: '18px 0px'}}>
-                        <div>
-                            <img className="image"
-                                src={otherUser.portrait}/>
-                        </div>
-                        <div>
-                            <div style={{display: 'flex', justifyContent: "space-between", width: "150%"}}>
-                                <h2>{otherUser.username}</h2>
-
+                    }
+                    {
+                        currentUser.username !== username &&
+                        // <PrivateContent otherUser = {otherUser[0]}/>
+                        <div style={{display: 'flex', justifyContent: "space-around", margin: '18px 0px'}}>
+                            <div>
+                                <img className="image"
+                                    src={otherUser.portrait}/>
                             </div>
                             <div>
-                                <p style={{fontSize: 20, marginTop: 10}}>{otherUser.bio}</p>
+                                <div style={{display: 'flex', justifyContent: "space-between", width: "150%"}}>
+                                    <h2>{otherUser.username}</h2>
+
+                                </div>
+                                <div>
+                                    <p style={{fontSize: 20, marginTop: 10}}>{otherUser.bio}</p>
+                                </div>
                             </div>
                         </div>
+        
+                    }
+
+                    <div className="cell-box">
+                        <div className="form-group row cell">
+                            {
+                                otherUser.role === "Chef" &&
+                                <>
+
+
+                                    <div className="col-6 each-cell">
+                                        <Link className={`bth ${!isFavo? 'select': 'not-select'}`} onClick={() => setIsFavo(false)}>
+                                            Your posts
+                                        </Link>
+                                    </div>
+                                    <div className="col-6 each-cell">
+                                        <Link className={`bth ${isFavo? 'select': 'not-select'}`} onClick={() => setIsFavo(true)}>
+                                            Your Favorites                            
+                                        </Link>
+                                    </div>
+                                </>
+                            }
+                            {
+                                otherUser.role !== "Chef" &&
+                                <>
+                                    <div className="col-12 each-cell">
+                                    <Link className={`bth ${isFavo? 'select': 'not-select'}`} onClick={() => setIsFavo(true)}>
+                                            Your Favorites                            
+                                        </Link>
+                                    </div>
+                                </>
+                            }
+
+
+                        </div>
                     </div>
-       
-                }
-
-                <div className="cell-box">
-                    <div className="form-group row cell">
-                        {
-                            otherUser.role === "Chef" &&
-                            <>
-
-
-                                <div className="col-6 each-cell">
-                                    Your posts
-                                </div>
-                                <div className="col-6 each-cell">
-                                    <Link to={`/favorites/user/${currentUser.username}`}>
-                                        Your Favorites
-                                    </Link>
-                                </div>
-                            </>
-                        }
-                        {
-                            otherUser.role !== "Chef" &&
-                            <>
-                                <div className="col-12 each-cell">
-                                    Your Favorites
-                                </div>
-                            </>
-                        }
-
-
-                    </div>
-                    <div className="row">
+                    <div className="lower">
+                        <div className="row card-area">
                         {/* {console.log(favorates)} */}
                         {
-                            favorates &&       
+                            favorates && isFavo &&      
                             favorates.map(favorate =>     
                                 <FavoritesForUser favorite={favorate}/>
                             )   
 
                         }
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </>

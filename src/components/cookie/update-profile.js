@@ -5,8 +5,6 @@ import userService from '../../services/users-service';
 import Footer from "../partials/footer";
 
 class UpdateProfile extends React.Component{
-    
-
     constructor(){
         super();
         this.state = {

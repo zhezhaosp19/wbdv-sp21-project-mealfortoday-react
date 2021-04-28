@@ -13,7 +13,7 @@ const FavoritesForUser = ({favorite}) => {
   }, [])
 
   return (
-      <div className="card" style={{width: "20rem"}}>
+      <div className="card" style={{width: "19.3rem"}}>
           {detail&&
             <>
               <img src={detail.strMealThumb} class="card-img-top" alt="..."/>
