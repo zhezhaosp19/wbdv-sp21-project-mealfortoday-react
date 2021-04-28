@@ -1,5 +1,7 @@
-const USER_URL = "http://localhost:4000/api/users"
-const FAVORITE_URL = "http://localhost:4000/api/favorites"
+// const USER_URL = "http://localhost:4000/api/users"
+// const FAVORITE_URL = "http://localhost:4000/api/favorites"
+const USER_URL = "https://mealfortoday.herokuapp.com/api/users"
+const FAVORITE_URL = "https://mealfortoday.herokuapp.com/api/favorites"
 
 const register = (user) =>
     // console.log(user)
