@@ -1,23 +1,44 @@
 import React, {useState} from 'react'
 import Header from "../partials/header";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import userService from '../../services/users-service';
 import Footer from "../partials/footer";
 
 class UpdateProfile extends React.Component{
-    state = {
-        username: '',
-        role: '',
-        email: '',
-        gender: '',
-        area: '',
-        bio: '',
-        flavor: '',
-        portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
-        // portrait: null
-    }
+    
 
-    componentDidMount() {
+    constructor(){
+        super();
+        this.state = {
+            username: '',
+            role: '',
+            email: '',
+            gender: '',
+            area: '',
+            bio: '',
+            flavor: '',
+            portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
+            // portrait: null
+        }
+    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         username: '',
+    //         role: '',
+    //         email: '',
+    //         gender: '',
+    //         area: '',
+    //         bio: '',
+    //         flavor: '',
+    //         portrait: 'https://www.cyphercoders.com/sites/default/files/default_images/default-user-icon-4.jpg'
+    //         // portrait: null
+    //     }
+
+    // }
+    
+
+    updateProps() {
         userService.profile()
             .then((profile) => {
                 console.log(profile)
@@ -32,6 +53,12 @@ class UpdateProfile extends React.Component{
                     portrait: profile.portrait
                 })
             })
+    }
+
+    componentDidMount() {
+        const username = this.props.params;
+        console.log(username);
+        this.updateProps()
     }
 
     onChangeHandler = (e) => {
