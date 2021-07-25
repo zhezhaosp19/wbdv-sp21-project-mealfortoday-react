@@ -1,6 +1,6 @@
-<h2>P2 Project Prototype</h2>
+<h2>MealForToday - Project Prototype</h2>
 
-<p>https://wbdv-sp21-mealfortoday.herokuapp.com/</p>
+<p>Check this out - https://wbdv-sp21-mealfortoday.herokuapp.com/</p>
 
 <ol>
  <li>Description of API:
